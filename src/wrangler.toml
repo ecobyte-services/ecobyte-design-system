@@ -1,0 +1,7 @@
+name = "ecobyte-design-system"
+main = "worker/index.ts"
+compatibility_date = "2025-10-03"
+account_id = "3a57e6b3e4ef82bac816c6cd25e2a553"
+
+[assets]
+directory = "dist"
