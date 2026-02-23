@@ -1,0 +1,461 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const features = [
+  {
+    icon: '🎬',
+    title: '4K Cloud Delivery',
+    desc: 'Stream your highest-quality masters directly from our geo-distributed network. Zero buffering, instant playback worldwide.',
+  },
+  {
+    icon: '🔒',
+    title: 'Zero-Trust Security',
+    desc: 'Every frame encrypted in transit and at rest. Granular access control per project, per collaborator, per deadline.',
+  },
+  {
+    icon: '⚡',
+    title: 'Real-Time Collaboration',
+    desc: 'Edit together in real time. Your director in Oslo sees the same frame as your VFX team in London — instantly.',
+  },
+  {
+    icon: '🌍',
+    title: 'Global Edge Network',
+    desc: 'Forty points of presence across Europe and North America. Your assets are always milliseconds away from your team.',
+  },
+  {
+    icon: '📊',
+    title: 'Production Analytics',
+    desc: 'Track delivery, viewing engagement, and storage trends. Make data-driven decisions on every production.',
+  },
+  {
+    icon: '♻️',
+    title: 'Carbon-Neutral Infra',
+    desc: '100% renewable energy. Verified offset credits. ESG reporting built into every invoice — because your brand deserves it.',
+  },
+];
+
+const testimonials = [
+  {
+    quote: "EcoByte's infrastructure completely changed how we deliver dailies. What used to be a 2-hour upload-and-wait is now instantaneous. Our directors love it.",
+    name: 'Siri Andersen',
+    title: 'Head of Post-Production, Nordic Film AS',
+    avatar: 'SA',
+    color: '#1B5E3A',
+  },
+  {
+    quote: 'We switched from a legacy FTP workflow to EcoByte six months ago. Our turnaround time dropped by 40% and we haven\'t had a single downtime incident.',
+    name: 'Lars-Erik Haugen',
+    title: 'Technical Director, Broadcast Nord',
+    avatar: 'LH',
+    color: '#C9A032',
+  },
+  {
+    quote: 'The carbon-neutral infrastructure wasn\'t just a nice-to-have — it was a requirement from our largest client. EcoByte was the only provider that could deliver.',
+    name: 'Maria Olsen',
+    title: 'CEO, GreenFrame Productions',
+    avatar: 'MO',
+    color: '#C07840',
+  },
+];
+
+const plans = [
+  {
+    name: 'Starter',
+    price: '€299',
+    period: '/month',
+    desc: 'For small production teams getting started with cloud infrastructure.',
+    features: [
+      '5 TB storage',
+      'Up to 10 collaborators',
+      '4K delivery',
+      'Basic analytics',
+      'Email support',
+    ],
+    cta: 'Get started',
+    highlighted: false,
+  },
+  {
+    name: 'Professional',
+    price: '€899',
+    period: '/month',
+    desc: 'For growing studios with complex workflows and demanding clients.',
+    features: [
+      '25 TB storage',
+      'Unlimited collaborators',
+      '4K + HDR delivery',
+      'Advanced analytics',
+      'Priority support',
+      'Custom domain',
+      'API access',
+    ],
+    cta: 'Start free trial',
+    highlighted: true,
+  },
+  {
+    name: 'Enterprise',
+    price: 'Custom',
+    period: '',
+    desc: 'For broadcast networks and large post-production houses.',
+    features: [
+      'Unlimited storage',
+      'SLA 99.99% uptime',
+      'Dedicated infrastructure',
+      'White-label portal',
+      'Dedicated CSM',
+      'On-premise option',
+      'Custom integrations',
+    ],
+    cta: 'Contact sales',
+    highlighted: false,
+  },
+];
+---
+
+<BaseLayout title="ACME Productions — EcoByte Demo" description="A fictional media production company landing page built with the EcoByte design system.">
+
+  <!-- ── Hero ─────────────────────────────────────── -->
+  <section
+    class="relative min-h-[88vh] flex items-center overflow-hidden"
+    style="background: #1B2820;"
+  >
+    <!-- Layered background -->
+    <div
+      class="absolute inset-0 opacity-40"
+      style="background: linear-gradient(135deg, #1B5E3A 0%, #4A7C4F 50%, #8B8C3E 100%);"
+      aria-hidden="true"
+    ></div>
+    <!-- Grid overlay -->
+    <div
+      class="absolute inset-0 opacity-5"
+      style="background-image: linear-gradient(#7A9A5E 1px, transparent 1px), linear-gradient(90deg, #7A9A5E 1px, transparent 1px); background-size: 60px 60px;"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Content -->
+    <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+      <div class="max-w-3xl">
+        <!-- Eyebrow -->
+        <div class="inline-flex items-center gap-2 mb-6">
+          <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background: #C9A032;" aria-hidden="true"></span>
+          <span class="text-xs font-semibold tracking-widest uppercase" style="color: #C9A032;">
+            Powered by EcoByte Infrastructure
+          </span>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-semibold text-white leading-[1.05] mb-6 text-balance">
+          Production
+          <span style="color: #C9A032;">infrastructure</span>
+          that just works.
+        </h1>
+
+        <p class="text-lg sm:text-xl max-w-2xl mb-10 text-pretty" style="color: rgba(255,255,255,0.75);">
+          ACME Productions runs on EcoByte — sustainable, high-performance cloud infrastructure
+          built specifically for the demands of modern media production.
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <a
+            href="#pricing"
+            class="px-7 py-3.5 rounded-xl font-semibold text-base transition-all hover:-translate-y-1 shadow-lg"
+            style="background: #C9A032; color: #1B2820;"
+          >
+            Start free trial
+          </a>
+          <a
+            href="#features"
+            class="px-7 py-3.5 rounded-xl font-semibold text-base border border-white/20 hover:bg-white/10 transition-all text-white"
+          >
+            See how it works
+          </a>
+        </div>
+
+        <!-- Social proof -->
+        <div class="mt-12 flex items-center gap-6 flex-wrap">
+          <div class="flex -space-x-2">
+            {['SA','LH','MO','EK','PB'].map((init, i) => (
+              <div
+                class="w-9 h-9 rounded-full border-2 border-[#1B2820] flex items-center justify-center text-xs font-semibold text-white"
+                style={`background: ${['#1B5E3A','#C9A032','#C07840','#4A7C4F','#8B8C3E'][i]};`}
+              >
+                {init}
+              </div>
+            ))}
+          </div>
+          <p class="text-sm" style="color: rgba(255,255,255,0.65);">
+            Trusted by <strong class="text-white">200+ production studios</strong> across Scandinavia
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Decorative circuit lines -->
+    <div class="absolute right-0 top-0 bottom-0 w-1/3 opacity-10 hidden lg:block" aria-hidden="true">
+      <svg viewBox="0 0 400 800" class="h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="50" y1="0" x2="50" y2="800" stroke="#C07840" stroke-width="1"/>
+        <line x1="150" y1="0" x2="150" y2="800" stroke="#C07840" stroke-width="1"/>
+        <line x1="250" y1="0" x2="250" y2="800" stroke="#C07840" stroke-width="1"/>
+        <line x1="350" y1="0" x2="350" y2="800" stroke="#C07840" stroke-width="1"/>
+        <line x1="0" y1="150" x2="400" y2="150" stroke="#C07840" stroke-width="1"/>
+        <line x1="0" y1="300" x2="400" y2="300" stroke="#C07840" stroke-width="1"/>
+        <line x1="0" y1="450" x2="400" y2="450" stroke="#C07840" stroke-width="1"/>
+        <line x1="0" y1="600" x2="400" y2="600" stroke="#C07840" stroke-width="1"/>
+        <circle cx="50" cy="150" r="5" fill="#C9A032"/>
+        <circle cx="150" cy="300" r="5" fill="#C9A032"/>
+        <circle cx="250" cy="450" r="5" fill="#C9A032"/>
+        <circle cx="350" cy="150" r="5" fill="#C9A032"/>
+        <circle cx="50" cy="600" r="5" fill="#C9A032"/>
+        <circle cx="250" cy="600" r="3" fill="#1B5E3A"/>
+        <circle cx="150" cy="450" r="3" fill="#1B5E3A"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ── Logos / Trust Bar ─────────────────────── -->
+  <section class="py-12 border-b" style="background: var(--bg-surface); border-color: var(--border);">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p class="text-center text-xs font-semibold uppercase tracking-widest mb-8" style="color: var(--text-secondary);">
+        Trusted by leading studios across Scandinavia
+      </p>
+      <div class="flex flex-wrap justify-center gap-8 sm:gap-16 items-center">
+        {['Nordic Film AS', 'Broadcast Nord', 'GreenFrame', 'Arctic Studios', 'MediaHub NO'].map((name) => (
+          <span class="text-sm font-semibold opacity-40" style="color: var(--text-primary);">{name}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Features ──────────────────────────────── -->
+  <section id="features" class="py-24" style="background: var(--bg-base);">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs font-semibold tracking-widest uppercase" style="color: #1B5E3A;">Platform Features</span>
+        <h2 class="text-3xl sm:text-4xl font-semibold mt-2 mb-4 text-balance" style="color: var(--text-primary);">
+          Everything your production needs.
+          <span style="color: #1B5E3A;">Nothing it doesn't.</span>
+        </h2>
+        <p class="text-base" style="color: var(--text-secondary);">
+          Built for the specific demands of media production — from single-camera documentaries to multi-day live broadcasts.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {features.map((f) => (
+          <div
+            class="rounded-2xl p-6 border card-hover"
+            style="background: var(--bg-surface); border-color: var(--border);"
+          >
+            <div
+              class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-5"
+              style="background: linear-gradient(135deg, #1B5E3A, #4A7C4F);"
+            >
+              {f.icon}
+            </div>
+            <h3 class="font-semibold text-base mb-2" style="color: var(--text-primary);">{f.title}</h3>
+            <p class="text-sm" style="color: var(--text-secondary);">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Stats ─────────────────────────────────── -->
+  <section class="py-20" style="background: linear-gradient(135deg, #1B5E3A 0%, #4A7C4F 100%);">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center text-white">
+        {[
+          { value: '99.99%', label: 'Uptime SLA' },
+          { value: '< 40ms', label: 'Global latency' },
+          { value: '200+', label: 'Production studios' },
+          { value: '100%', label: 'Renewable energy' },
+        ].map((stat) => (
+          <div>
+            <p class="text-4xl sm:text-5xl font-semibold mb-2">{stat.value}</p>
+            <p class="text-sm text-white/70">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Testimonials ──────────────────────────── -->
+  <section class="py-24" style="background: var(--bg-base);">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="text-xs font-semibold tracking-widest uppercase" style="color: #1B5E3A;">Testimonials</span>
+        <h2 class="text-3xl sm:text-4xl font-semibold mt-2" style="color: var(--text-primary);">
+          What studios are saying
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {testimonials.map((t) => (
+          <div
+            class="rounded-2xl p-7 border card-hover flex flex-col"
+            style="background: var(--bg-surface); border-color: var(--border);"
+          >
+            <!-- Stars -->
+            <div class="flex gap-1 mb-4" aria-label="5 out of 5 stars">
+              {[...Array(5)].map(() => (
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" style="color: #C9A032;" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292Z" />
+                </svg>
+              ))}
+            </div>
+
+            <blockquote class="text-sm flex-1 mb-6 italic" style="color: var(--text-secondary);">
+              "{t.quote}"
+            </blockquote>
+
+            <div class="flex items-center gap-3">
+              <div
+                class="w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0"
+                style={`background: ${t.color};`}
+                aria-hidden="true"
+              >
+                {t.avatar}
+              </div>
+              <div>
+                <p class="text-sm font-semibold" style="color: var(--text-primary);">{t.name}</p>
+                <p class="text-xs" style="color: var(--text-secondary);">{t.title}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Pricing ───────────────────────────────── -->
+  <section id="pricing" class="py-24 border-t" style="background: var(--bg-surface); border-color: var(--border);">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="text-xs font-semibold tracking-widest uppercase" style="color: #1B5E3A;">Pricing</span>
+        <h2 class="text-3xl sm:text-4xl font-semibold mt-2 mb-4" style="color: var(--text-primary);">
+          Simple, transparent pricing
+        </h2>
+        <p class="text-base max-w-xl mx-auto" style="color: var(--text-secondary);">
+          No per-seat fees. No surprise overages. Pay for what your production actually uses.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {plans.map((plan) => (
+          <div
+            class={['rounded-2xl border overflow-hidden flex flex-col', plan.highlighted ? 'shadow-2xl scale-105' : ''].join(' ')}
+            style={plan.highlighted
+              ? 'border-color: #1B5E3A; background: #1B5E3A;'
+              : `border-color: var(--border); background: var(--bg-surface);`}
+          >
+            {plan.highlighted && (
+              <div class="px-6 py-2 text-center text-xs font-semibold" style="background: #C9A032; color: #1B2820;">
+                Most Popular
+              </div>
+            )}
+
+            <div class="p-6 flex-1">
+              <h3
+                class="text-base font-semibold mb-1"
+                style={plan.highlighted ? 'color: rgba(255,255,255,0.8);' : 'color: var(--text-secondary);'}
+              >
+                {plan.name}
+              </h3>
+              <div class="flex items-end gap-1 mt-3 mb-4">
+                <span
+                  class="text-4xl font-semibold"
+                  style={plan.highlighted ? 'color: white;' : 'color: var(--text-primary);'}
+                >
+                  {plan.price}
+                </span>
+                {plan.period && (
+                  <span class="text-sm mb-1" style={plan.highlighted ? 'color: rgba(255,255,255,0.6);' : 'color: var(--text-secondary);'}>
+                    {plan.period}
+                  </span>
+                )}
+              </div>
+              <p
+                class="text-sm mb-6"
+                style={plan.highlighted ? 'color: rgba(255,255,255,0.7);' : 'color: var(--text-secondary);'}
+              >
+                {plan.desc}
+              </p>
+
+              <ul class="space-y-2.5">
+                {plan.features.map((f) => (
+                  <li class="flex items-center gap-2.5 text-sm">
+                    <svg
+                      class="w-4 h-4 shrink-0"
+                      fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"
+                      style={plan.highlighted ? 'color: #C9A032;' : 'color: #1B5E3A;'}
+                      aria-hidden="true"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                    </svg>
+                    <span style={plan.highlighted ? 'color: rgba(255,255,255,0.85);' : 'color: var(--text-primary);'}>
+                      {f}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="p-6 pt-0">
+              <a
+                href="#"
+                class={[
+                  'block w-full text-center px-4 py-3 rounded-xl font-semibold text-sm transition-all hover:-translate-y-0.5',
+                  plan.highlighted ? '' : 'border-2',
+                ].join(' ')}
+                style={plan.highlighted
+                  ? 'background: #C9A032; color: #1B2820;'
+                  : `border-color: #1B5E3A; color: #1B5E3A; background: transparent;`}
+              >
+                {plan.cta}
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────────── -->
+  <section class="py-24" style="background: var(--bg-base);">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+      <div
+        class="rounded-3xl p-10 sm:p-16 relative overflow-hidden"
+        style="background: linear-gradient(135deg, #1B5E3A 0%, #4A7C4F 100%);"
+      >
+        <div
+          class="absolute inset-0 opacity-10"
+          style="background-image: radial-gradient(circle at 20% 50%, #C9A032 0%, transparent 50%), radial-gradient(circle at 80% 20%, #C07840 0%, transparent 40%);"
+          aria-hidden="true"
+        ></div>
+        <div class="relative z-10">
+          <h2 class="text-3xl sm:text-4xl font-semibold text-white mb-4 text-balance">
+            Ready to grow your production?
+          </h2>
+          <p class="text-base mb-8 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
+            Join 200+ studios who've simplified their infrastructure with EcoByte.
+            Start your 14-day free trial — no credit card required.
+          </p>
+          <div class="flex flex-wrap gap-4 justify-center">
+            <a
+              href="#pricing"
+              class="px-7 py-3.5 rounded-xl font-semibold text-sm transition-all hover:-translate-y-0.5 shadow-lg"
+              style="background: #C9A032; color: #1B2820;"
+            >
+              Start for free
+            </a>
+            <a
+              href="#"
+              class="px-7 py-3.5 rounded-xl font-semibold text-sm border border-white/30 hover:bg-white/10 transition-all text-white"
+            >
+              Book a demo
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

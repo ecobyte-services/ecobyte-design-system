@@ -1,0 +1,377 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  return [
+    { params: { slug: 'future-of-cloud-production' } },
+    { params: { slug: 'zero-trust-production' } },
+    { params: { slug: 'carbon-neutral-infrastructure' } },
+    { params: { slug: 'real-time-collaboration' } },
+    { params: { slug: '4k-delivery-network' } },
+    { params: { slug: 'acme-case-study' } },
+  ];
+}
+
+const { slug } = Astro.params;
+
+// Minimal article data keyed by slug
+const articles: Record<string, {
+  title: string;
+  category: string;
+  date: string;
+  readTime: string;
+  author: { name: string; avatar: string; color: string; role: string };
+  gradient: string;
+  intro: string;
+}> = {
+  'future-of-cloud-production': {
+    title: 'The Future of Cloud-Native Film Production in Scandinavia',
+    category: 'Industry Insights',
+    date: '20 Feb 2026',
+    readTime: '8 min read',
+    author: { name: 'Siri Andersen', avatar: 'SA', color: '#1B5E3A', role: 'Head of Post-Production' },
+    gradient: 'linear-gradient(135deg, #1B5E3A 0%, #4A7C4F 60%, #7A9A5E 100%)',
+    intro: 'Norwegian and Swedish studios are at the forefront of a quiet revolution in how films and series are made, delivered, and archived.',
+  },
+  'zero-trust-production': {
+    title: 'Zero-Trust Security for Production Workflows',
+    category: 'Security',
+    date: '15 Feb 2026',
+    readTime: '6 min read',
+    author: { name: 'Lars Haugen', avatar: 'LH', color: '#C9A032', role: 'Technical Director' },
+    gradient: 'linear-gradient(135deg, #1B2820, #1B5E3A)',
+    intro: 'The "castle-and-moat" security model is dead. Here\'s how zero-trust architecture is redefining security for distributed production teams.',
+  },
+  'carbon-neutral-infrastructure': {
+    title: 'Carbon-Neutral Infrastructure: A Competitive Advantage',
+    category: 'Sustainability',
+    date: '10 Feb 2026',
+    readTime: '5 min read',
+    author: { name: 'Maria Olsen', avatar: 'MO', color: '#C07840', role: 'CEO' },
+    gradient: 'linear-gradient(135deg, #4A7C4F, #8B8C3E)',
+    intro: 'Sustainability is shifting from "nice to have" to a requirement for media companies working with brand-conscious clients.',
+  },
+  'real-time-collaboration': {
+    title: 'Real-Time Collaboration Across Continents',
+    category: 'Technology',
+    date: '03 Feb 2026',
+    readTime: '7 min read',
+    author: { name: 'Erik Karlsson', avatar: 'EK', color: '#4A7C4F', role: 'Senior Engineer' },
+    gradient: 'linear-gradient(135deg, #C07840, #7A5030)',
+    intro: 'How we built a low-latency synchronisation layer that lets creative teams on opposite sides of the world share the same frame.',
+  },
+  '4k-delivery-network': {
+    title: 'Building a 4K Delivery Network That Actually Scales',
+    category: 'Engineering',
+    date: '28 Jan 2026',
+    readTime: '10 min read',
+    author: { name: 'Petra Bjørnstad', avatar: 'PB', color: '#8B8C3E', role: 'Infrastructure Lead' },
+    gradient: 'linear-gradient(135deg, #7A9A5E, #4A7C4F)',
+    intro: 'Scaling uncompressed 4K delivery is a different beast from web traffic. Here\'s the architecture that makes it possible.',
+  },
+  'acme-case-study': {
+    title: 'Case Study: How ACME Productions Saved 40% on Delivery',
+    category: 'Case Study',
+    date: '22 Jan 2026',
+    readTime: '12 min read',
+    author: { name: 'Siri Andersen', avatar: 'SA', color: '#1B5E3A', role: 'Head of Post-Production' },
+    gradient: 'linear-gradient(135deg, #C9A032, #C07840)',
+    intro: 'A detailed breakdown of ACME\'s 6-month migration to EcoByte infrastructure — the challenges, the wins, and the numbers.',
+  },
+};
+
+const article = articles[slug] ?? articles['future-of-cloud-production'];
+
+const relatedPosts = Object.entries(articles)
+  .filter(([s]) => s !== slug)
+  .slice(0, 3)
+  .map(([s, a]) => ({ slug: s, ...a }));
+---
+
+<BaseLayout title={article.title} description={article.intro}>
+
+  <!-- ── Article hero ─────────────────────────────── -->
+  <div
+    class="h-72 sm:h-96 relative overflow-hidden"
+    style={`background: ${article.gradient};`}
+    aria-hidden="true"
+  >
+    <div class="absolute inset-0 flex items-center justify-center">
+      <div class="text-white/5 text-[200px] font-bold leading-none select-none">{article.title.charAt(0)}</div>
+    </div>
+    <div class="absolute top-6 left-6">
+      <a
+        href="/acme/blog"
+        class="inline-flex items-center gap-2 text-xs font-semibold text-white/80 hover:text-white transition-colors"
+      >
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+        </svg>
+        Back to Blog
+      </a>
+    </div>
+  </div>
+
+  <!-- ── Article layout ───────────────────────────── -->
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+
+      <!-- Main article -->
+      <article class="lg:col-span-3">
+        <!-- Meta -->
+        <header class="mb-8">
+          <span class="text-xs font-semibold uppercase tracking-wider" style="color: #1B5E3A;">{article.category}</span>
+          <h1 class="text-3xl sm:text-4xl font-semibold mt-2 mb-4 text-balance" style="color: var(--text-primary);">
+            {article.title}
+          </h1>
+          <p class="text-lg mb-6 text-pretty" style="color: var(--text-secondary);">{article.intro}</p>
+
+          <div class="flex items-center gap-4 flex-wrap">
+            <div class="flex items-center gap-3">
+              <div
+                class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-white"
+                style={`background: ${article.author.color};`}
+                aria-hidden="true"
+              >
+                {article.author.avatar}
+              </div>
+              <div>
+                <p class="text-sm font-semibold" style="color: var(--text-primary);">{article.author.name}</p>
+                <p class="text-xs" style="color: var(--text-secondary);">{article.author.role}</p>
+              </div>
+            </div>
+            <div class="h-4 w-px" style="background: var(--border);" aria-hidden="true"></div>
+            <p class="text-sm" style="color: var(--text-secondary);">{article.date}</p>
+            <div class="h-4 w-px" style="background: var(--border);" aria-hidden="true"></div>
+            <p class="text-sm" style="color: var(--text-secondary);">{article.readTime}</p>
+
+            <!-- Share -->
+            <div class="flex items-center gap-2 ml-auto">
+              <span class="text-xs" style="color: var(--text-secondary);">Share:</span>
+              {['Twitter', 'LinkedIn', 'Copy link'].map((s) => (
+                <button
+                  class="px-2.5 py-1 text-xs font-semibold rounded-md border transition-colors hover:border-[#1B5E3A] hover:text-[#1B5E3A]"
+                  style="border-color: var(--border); color: var(--text-secondary);"
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div class="mt-6 border-t border-b py-4" style="border-color: var(--border);">
+            <div class="flex gap-6 text-xs" style="color: var(--text-secondary);">
+              <span>📖 {article.readTime}</span>
+              <span>🏷️ {article.category}</span>
+              <span>📅 {article.date}</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Article body (static lorem ipsum styled like a real article) -->
+        <div class="space-y-6 text-base" style="color: var(--text-primary); line-height: 1.8;">
+
+          <p>
+            The media production industry is undergoing a fundamental shift. For decades, studios
+            have relied on on-premise NAS arrays, physical media shuttles, and proprietary editing
+            suites. The model worked — barely — when productions were local and deadlines were
+            measured in weeks, not hours.
+          </p>
+
+          <p>
+            That world no longer exists. Today's productions are global, multi-team endeavours.
+            Your director of photography is in Bergen. Your colour grading suite is in London.
+            Your client's legal team is in New York. And everyone needs to review the same cut —
+            right now.
+          </p>
+
+          <h2 class="text-2xl font-semibold mt-10 mb-4" style="color: var(--text-primary);">
+            The infrastructure gap
+          </h2>
+
+          <p style="color: var(--text-secondary);">
+            Legacy infrastructure wasn't designed for this. VPN tunnels to on-premise storage
+            introduce latency that makes real-time review impossible. Physical media workflows
+            create bottlenecks at every handoff point. And when your DAS fails at 2am before a
+            morning delivery — and it will fail — you're calling in favours, not executing a
+            documented recovery plan.
+          </p>
+
+          <!-- Pull quote -->
+          <blockquote
+            class="my-8 pl-6 border-l-4 italic"
+            style="border-color: #1B5E3A; color: var(--text-secondary);"
+          >
+            "We used to spend 30% of our post budget on storage logistics. Now that budget goes
+            directly into the creative. EcoByte didn't just save us money — it changed what we
+            can afford to make."
+            <footer class="mt-2 text-sm not-italic font-semibold" style="color: #1B5E3A;">
+              — Siri Andersen, Head of Post-Production, Nordic Film AS
+            </footer>
+          </blockquote>
+
+          <h2 class="text-2xl font-semibold mt-10 mb-4" style="color: var(--text-primary);">
+            What cloud-native actually means
+          </h2>
+
+          <p style="color: var(--text-secondary);">
+            "Cloud-native" is an overused phrase in our industry. Vendors slap it on anything
+            with an S3 bucket. Let's be precise: true cloud-native production infrastructure
+            means your entire workflow — ingest, proxy generation, review, VFX exchange,
+            finishing, and delivery — runs on infrastructure designed from the ground up for
+            the cloud.
+          </p>
+
+          <!-- Callout box -->
+          <div
+            class="rounded-xl p-6 border-l-4"
+            style="background: #E8F0E8; border-color: #1B5E3A;"
+          >
+            <h3 class="text-base font-semibold mb-2" style="color: #1B5E3A;">Key principle</h3>
+            <p class="text-sm" style="color: #333333;">
+              Cloud-native doesn't mean "on the cloud." It means your architecture takes full
+              advantage of cloud primitives: elastic compute, geo-distributed storage,
+              event-driven processing, and managed security. Every component is designed to
+              scale independently and fail gracefully.
+            </p>
+          </div>
+
+          <h2 class="text-2xl font-semibold mt-10 mb-4" style="color: var(--text-primary);">
+            The Scandinavian advantage
+          </h2>
+
+          <p style="color: var(--text-secondary);">
+            Norway and Sweden have a unique confluence of factors that make them ideal early
+            adopters of cloud-native production: robust digital infrastructure, progressive
+            data sovereignty laws compatible with GDPR, a strong culture of technology adoption,
+            and — critically — a genuine commitment to sustainability.
+          </p>
+
+          <p style="color: var(--text-secondary);">
+            The last point matters more than it might seem. European clients — particularly in
+            luxury, automotive, and consumer brands — are demanding verifiable ESG credentials
+            from their production partners. Being able to show a carbon-neutral supply chain
+            from camera to delivery is becoming a competitive differentiator.
+          </p>
+
+          <!-- Stats row -->
+          <div class="grid grid-cols-3 gap-4 my-8">
+            {[
+              { value: '40%', label: 'avg delivery time reduction' },
+              { value: '€200k', label: 'avg annual infra savings' },
+              { value: '100%', label: 'renewable energy' },
+            ].map((stat) => (
+              <div
+                class="text-center rounded-xl p-4"
+                style="background: var(--bg-muted);"
+              >
+                <p class="text-2xl font-semibold mb-1" style="color: #1B5E3A;">{stat.value}</p>
+                <p class="text-xs" style="color: var(--text-secondary);">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+
+          <h2 class="text-2xl font-semibold mt-10 mb-4" style="color: var(--text-primary);">
+            What to look for in a production cloud partner
+          </h2>
+
+          <ul class="space-y-3 pl-0" style="color: var(--text-secondary);">
+            {[
+              'Latency guarantees, not just bandwidth numbers',
+              'Media-aware storage with native proxy generation',
+              'Zero-trust access control at the asset level',
+              'Verifiable carbon-neutral credentials',
+              'Integration with the tools your team already uses',
+              'Support from people who understand production, not just IT',
+            ].map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="color: #1B5E3A;" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <!-- Author bio -->
+          <div
+            class="mt-12 rounded-xl border p-6 flex gap-4"
+            style="background: var(--bg-muted); border-color: var(--border);"
+          >
+            <div
+              class="w-14 h-14 rounded-full flex items-center justify-center text-lg font-bold text-white shrink-0"
+              style={`background: ${article.author.color};`}
+              aria-hidden="true"
+            >
+              {article.author.avatar}
+            </div>
+            <div>
+              <p class="text-sm font-semibold mb-0.5" style="color: var(--text-primary);">{article.author.name}</p>
+              <p class="text-xs mb-2" style="color: var(--text-secondary);">{article.author.role}</p>
+              <p class="text-sm" style="color: var(--text-secondary);">
+                Writing about sustainable production infrastructure, cloud workflows, and
+                the future of media delivery. Based in Oslo.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Sidebar ──────────────────────────────── -->
+      <aside class="space-y-6">
+
+        <!-- Table of contents -->
+        <div
+          class="rounded-xl border p-5 sticky top-20"
+          style="background: var(--bg-surface); border-color: var(--border);"
+        >
+          <h3 class="text-sm font-semibold mb-4" style="color: var(--text-primary);">In this article</h3>
+          <nav aria-label="Article sections">
+            <ul class="space-y-2 text-sm" style="color: var(--text-secondary);">
+              {[
+                'The infrastructure gap',
+                'What cloud-native actually means',
+                'The Scandinavian advantage',
+                'What to look for in a partner',
+              ].map((section, i) => (
+                <li>
+                  <a
+                    href="#"
+                    class={['block py-1 pl-3 border-l-2 transition-colors hover:text-[#1B5E3A]', i === 0 ? '' : ''].join(' ')}
+                    style={i === 0
+                      ? 'border-color: #1B5E3A; color: #1B5E3A; font-weight: 600;'
+                      : 'border-color: var(--border); color: var(--text-secondary);'}
+                  >
+                    {section}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Related -->
+        <div
+          class="rounded-xl border p-5"
+          style="background: var(--bg-surface); border-color: var(--border);"
+        >
+          <h3 class="text-sm font-semibold mb-4" style="color: var(--text-primary);">Related Articles</h3>
+          <ul class="space-y-4" role="list">
+            {relatedPosts.map((post) => (
+              <li>
+                <a href={`/acme/blog/${post.slug}`} class="group block">
+                  <div class="h-16 rounded-lg mb-2 overflow-hidden" style={`background: ${post.gradient};`} aria-hidden="true"></div>
+                  <span class="text-xs font-semibold uppercase tracking-wider" style="color: #1B5E3A;">{post.category}</span>
+                  <p class="text-sm font-semibold group-hover:text-[#1B5E3A] transition-colors mt-1 line-clamp-2" style="color: var(--text-primary);">
+                    {post.title}
+                  </p>
+                  <p class="text-xs mt-1" style="color: var(--text-secondary);">{post.readTime}</p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

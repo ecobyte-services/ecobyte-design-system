@@ -1,0 +1,345 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const featured = {
+  slug: 'future-of-cloud-production',
+  title: 'The Future of Cloud-Native Film Production in Scandinavia',
+  excerpt: 'How Norwegian and Swedish studios are ditching on-premise storage in favour of sustainable, high-performance cloud infrastructure — and what it means for the industry.',
+  category: 'Industry Insights',
+  author: { name: 'Siri Andersen', avatar: 'SA', color: '#1B5E3A' },
+  date: '20 Feb 2026',
+  readTime: '8 min read',
+  gradient: 'linear-gradient(135deg, #1B5E3A 0%, #4A7C4F 60%, #7A9A5E 100%)',
+};
+
+const posts = [
+  {
+    slug: 'zero-trust-production',
+    title: 'Zero-Trust Security for Production Workflows',
+    excerpt: 'Why "castle-and-moat" security models fail in distributed production environments — and how zero-trust architecture keeps your masters safe.',
+    category: 'Security',
+    author: { name: 'Lars Haugen', avatar: 'LH', color: '#C9A032' },
+    date: '15 Feb 2026',
+    readTime: '6 min read',
+    gradient: 'linear-gradient(135deg, #1B2820, #1B5E3A)',
+  },
+  {
+    slug: 'carbon-neutral-infrastructure',
+    title: 'Carbon-Neutral Infrastructure: A Competitive Advantage',
+    excerpt: 'Sustainability is no longer a nice-to-have for media companies. We explore how going green with your infrastructure opens doors to new clients.',
+    category: 'Sustainability',
+    author: { name: 'Maria Olsen', avatar: 'MO', color: '#C07840' },
+    date: '10 Feb 2026',
+    readTime: '5 min read',
+    gradient: 'linear-gradient(135deg, #4A7C4F, #8B8C3E)',
+  },
+  {
+    slug: 'real-time-collaboration',
+    title: 'Real-Time Collaboration Across Continents',
+    excerpt: 'A deep dive into the technology that lets your director in Oslo and your VFX team in London see the same frame at the same moment.',
+    category: 'Technology',
+    author: { name: 'Erik Karlsson', avatar: 'EK', color: '#4A7C4F' },
+    date: '03 Feb 2026',
+    readTime: '7 min read',
+    gradient: 'linear-gradient(135deg, #C07840, #7A5030)',
+  },
+  {
+    slug: '4k-delivery-network',
+    title: 'Building a 4K Delivery Network That Actually Scales',
+    excerpt: 'The engineering challenges of delivering uncompressed 4K masters to review rooms worldwide — and how we solved them.',
+    category: 'Engineering',
+    author: { name: 'Petra Bjørnstad', avatar: 'PB', color: '#8B8C3E' },
+    date: '28 Jan 2026',
+    readTime: '10 min read',
+    gradient: 'linear-gradient(135deg, #7A9A5E, #4A7C4F)',
+  },
+  {
+    slug: 'acme-case-study',
+    title: 'Case Study: How ACME Productions Saved 40% on Delivery',
+    excerpt: 'A real-world breakdown of the workflow changes, cost savings, and lessons learned after migrating ACME Productions to EcoByte infrastructure.',
+    category: 'Case Study',
+    author: { name: 'Siri Andersen', avatar: 'SA', color: '#1B5E3A' },
+    date: '22 Jan 2026',
+    readTime: '12 min read',
+    gradient: 'linear-gradient(135deg, #C9A032, #C07840)',
+  },
+];
+
+const categories = ['All', 'Industry Insights', 'Security', 'Sustainability', 'Technology', 'Engineering', 'Case Study'];
+---
+
+<BaseLayout title="ACME Blog" description="Insights, case studies, and engineering deep-dives from the ACME Productions team.">
+
+  <!-- ── Hero ─────────────────────────────────────── -->
+  <section class="py-16 border-b" style="background: var(--bg-surface); border-color: var(--border);">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <span class="text-xs font-semibold tracking-widest uppercase" style="color: #1B5E3A;">ACME Productions</span>
+        <h1 class="text-4xl sm:text-5xl font-semibold mt-2 mb-4 text-balance" style="color: var(--text-primary);">
+          Insights from the field
+        </h1>
+        <p class="text-base" style="color: var(--text-secondary);">
+          Industry analysis, technical deep-dives, and behind-the-scenes stories from one of Scandinavia's leading production studios.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- ── Featured post ─────────────────────────── -->
+    <article class="mb-14">
+      <a
+        href={`/acme/blog/${featured.slug}`}
+        class="group block rounded-2xl overflow-hidden border card-hover"
+        style="border-color: var(--border);"
+        aria-label={`Read: ${featured.title}`}
+      >
+        <div class="grid grid-cols-1 lg:grid-cols-2">
+          <!-- Image -->
+          <div
+            class="h-56 lg:h-auto relative overflow-hidden"
+            style={`background: ${featured.gradient};`}
+            aria-hidden="true"
+          >
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="text-white/10 text-[120px] font-bold leading-none select-none">01</div>
+            </div>
+            <div class="absolute top-4 left-4">
+              <span class="px-2.5 py-1 text-xs font-semibold rounded-full text-white" style="background: rgba(0,0,0,0.3);">
+                {featured.category}
+              </span>
+            </div>
+            <div class="absolute bottom-4 left-4">
+              <span class="px-2.5 py-1 text-xs font-semibold rounded-full text-white" style="background: rgba(201,160,50,0.9);">
+                Featured
+              </span>
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div
+            class="p-8 flex flex-col justify-center"
+            style="background: var(--bg-surface);"
+          >
+            <span class="text-xs font-semibold uppercase tracking-wider mb-3" style="color: #1B5E3A;">{featured.category}</span>
+            <h2
+              class="text-2xl sm:text-3xl font-semibold mb-4 group-hover:text-[#1B5E3A] transition-colors text-balance"
+              style="color: var(--text-primary);"
+            >
+              {featured.title}
+            </h2>
+            <p class="text-sm mb-6 line-clamp-3" style="color: var(--text-secondary);">{featured.excerpt}</p>
+            <div class="flex items-center gap-3">
+              <div
+                class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0"
+                style={`background: ${featured.author.color};`}
+                aria-hidden="true"
+              >
+                {featured.author.avatar}
+              </div>
+              <div>
+                <p class="text-sm font-semibold" style="color: var(--text-primary);">{featured.author.name}</p>
+                <p class="text-xs" style="color: var(--text-secondary);">{featured.date} · {featured.readTime}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </article>
+
+    <!-- ── Layout: posts + sidebar ───────────────── -->
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+
+      <!-- Posts grid -->
+      <div class="lg:col-span-3">
+
+        <!-- Category filter -->
+        <div class="flex flex-wrap gap-2 mb-8">
+          {categories.map((cat, i) => (
+            <button
+              class="px-3 py-1.5 text-xs font-semibold rounded-full transition-colors"
+              style={i === 0
+                ? 'background: #1B5E3A; color: white;'
+                : 'background: var(--bg-muted); color: var(--text-secondary);'}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        <!-- Post cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {posts.map((post) => (
+            <article>
+              <a
+                href={`/acme/blog/${post.slug}`}
+                class="group block rounded-xl border overflow-hidden card-hover h-full"
+                style="border-color: var(--border);"
+              >
+                <!-- Card image -->
+                <div
+                  class="h-40 relative overflow-hidden"
+                  style={`background: ${post.gradient};`}
+                  aria-hidden="true"
+                >
+                  <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="text-white/10 text-8xl font-bold leading-none select-none">
+                      {post.title.charAt(0)}
+                    </div>
+                  </div>
+                  <div class="absolute top-3 left-3">
+                    <span class="px-2 py-0.5 text-xs font-semibold rounded-full text-white" style="background: rgba(0,0,0,0.35);">
+                      {post.category}
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Card content -->
+                <div class="p-5 flex flex-col" style="background: var(--bg-surface);">
+                  <h3
+                    class="text-base font-semibold mb-2 group-hover:text-[#1B5E3A] transition-colors line-clamp-2"
+                    style="color: var(--text-primary);"
+                  >
+                    {post.title}
+                  </h3>
+                  <p class="text-sm mb-4 line-clamp-2 flex-1" style="color: var(--text-secondary);">{post.excerpt}</p>
+                  <div class="flex items-center gap-2">
+                    <div
+                      class="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold text-white shrink-0"
+                      style={`background: ${post.author.color};`}
+                      aria-hidden="true"
+                    >
+                      {post.author.avatar}
+                    </div>
+                    <p class="text-xs" style="color: var(--text-secondary);">
+                      <span class="font-semibold" style="color: var(--text-primary);">{post.author.name}</span>
+                      {' '}· {post.date} · {post.readTime}
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+
+        <!-- Pagination -->
+        <div class="mt-10 flex items-center justify-center gap-2">
+          <button class="p-2 rounded-lg border" style="border-color: var(--border); color: var(--text-secondary);" aria-label="Previous page">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" /></svg>
+          </button>
+          {[1, 2, 3].map((n) => (
+            <button
+              class="w-9 h-9 rounded-lg text-sm font-semibold"
+              style={n === 1
+                ? 'background: #1B5E3A; color: white;'
+                : `border: 1px solid var(--border); color: var(--text-secondary); background: transparent;`}
+              aria-current={n === 1 ? 'page' : undefined}
+            >
+              {n}
+            </button>
+          ))}
+          <button class="p-2 rounded-lg border" style="border-color: var(--border); color: var(--text-secondary);" aria-label="Next page">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ── Sidebar ────────────────────────────── -->
+      <aside class="space-y-8">
+
+        <!-- Search -->
+        <div
+          class="rounded-xl border p-5"
+          style="background: var(--bg-surface); border-color: var(--border);"
+        >
+          <h3 class="text-sm font-semibold mb-3" style="color: var(--text-primary);">Search</h3>
+          <div class="relative">
+            <svg
+              class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4"
+              fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+              style="color: var(--text-secondary);"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+            <input
+              type="search"
+              placeholder="Search articles…"
+              class="w-full pl-9 pr-3 py-2 text-sm rounded-lg border outline-none focus:ring-2 ring-[#1B5E3A]"
+              style="background: var(--bg-base); border-color: var(--border); color: var(--text-primary);"
+            />
+          </div>
+        </div>
+
+        <!-- Popular posts -->
+        <div
+          class="rounded-xl border p-5"
+          style="background: var(--bg-surface); border-color: var(--border);"
+        >
+          <h3 class="text-sm font-semibold mb-4" style="color: var(--text-primary);">Popular Articles</h3>
+          <ul class="space-y-4" role="list">
+            {posts.slice(0, 4).map((post, i) => (
+              <li>
+                <a
+                  href={`/acme/blog/${post.slug}`}
+                  class="flex gap-3 group"
+                >
+                  <span class="text-2xl font-bold tabular-nums w-8 shrink-0" style="color: var(--border);">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <p class="text-sm font-semibold group-hover:text-[#1B5E3A] transition-colors line-clamp-2" style="color: var(--text-primary);">
+                    {post.title}
+                  </p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div
+          class="rounded-xl p-5 overflow-hidden relative"
+          style="background: linear-gradient(135deg, #1B5E3A, #4A7C4F);"
+        >
+          <div
+            class="absolute -right-4 -bottom-4 w-24 h-24 rounded-full opacity-20"
+            style="background: #C9A032;"
+            aria-hidden="true"
+          ></div>
+          <h3 class="text-sm font-semibold text-white mb-2">Newsletter</h3>
+          <p class="text-xs text-white/70 mb-4">Get the latest from ACME in your inbox. No spam, ever.</p>
+          <input
+            type="email"
+            placeholder="your@email.com"
+            class="w-full px-3 py-2 text-sm rounded-lg border-none outline-none mb-2"
+            style="background: rgba(255,255,255,0.15); color: white; placeholder-color: white/50;"
+          />
+          <button class="w-full py-2 text-sm font-semibold rounded-lg transition-all hover:opacity-90" style="background: #C9A032; color: #1B2820;">
+            Subscribe
+          </button>
+        </div>
+
+        <!-- Tags -->
+        <div
+          class="rounded-xl border p-5"
+          style="background: var(--bg-surface); border-color: var(--border);"
+        >
+          <h3 class="text-sm font-semibold mb-4" style="color: var(--text-primary);">Tags</h3>
+          <div class="flex flex-wrap gap-2">
+            {['cloud', '4K', 'collaboration', 'security', 'sustainability', 'broadcast', 'workflow', 'post-production', 'API', 'analytics'].map((tag) => (
+              <a
+                href="#"
+                class="px-2.5 py-1 text-xs font-semibold rounded-md border transition-colors hover:border-[#1B5E3A] hover:text-[#1B5E3A]"
+                style="border-color: var(--border); color: var(--text-secondary);"
+              >
+                #{tag}
+              </a>
+            ))}
+          </div>
+        </div>
+      </aside>
+    </div>
+
+  </div>
+</BaseLayout>

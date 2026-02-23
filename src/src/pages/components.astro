@@ -1,0 +1,534 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Components">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+
+    <!-- Header -->
+    <div class="mb-12">
+      <span class="text-xs font-semibold tracking-widest uppercase" style="color: #1B5E3A;">EcoByte Design System</span>
+      <h1 class="text-4xl font-semibold mt-2 mb-3" style="color: var(--text-primary);">Component Gallery</h1>
+      <p class="text-base max-w-2xl" style="color: var(--text-secondary);">
+        Production-ready, accessible UI components built on the EcoByte design system.
+        Every component is dark-mode aware and keyboard navigable.
+      </p>
+    </div>
+
+    <div class="space-y-16">
+
+      <!-- ── Buttons ─────────────────────────────── -->
+      <section id="buttons">
+        <h2 class="text-xl font-semibold mb-1" style="color: var(--text-primary);">Buttons</h2>
+        <p class="text-sm mb-6" style="color: var(--text-secondary);">Primary action, secondary, ghost, and destructive variants across three sizes.</p>
+
+        <!-- Sizes -->
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-xs uppercase tracking-wider font-semibold mb-4" style="color: var(--text-secondary);">Primary</h3>
+            <div class="flex flex-wrap gap-3 items-center">
+              <button class="px-3 py-1.5 text-xs font-semibold rounded-md text-white transition-all hover:opacity-90 hover:-translate-y-px active:translate-y-0" style="background: #1B5E3A;">Small</button>
+              <button class="px-4 py-2 text-sm font-semibold rounded-lg text-white transition-all hover:opacity-90 hover:-translate-y-px active:translate-y-0" style="background: #1B5E3A;">Default</button>
+              <button class="px-6 py-3 text-base font-semibold rounded-lg text-white transition-all hover:opacity-90 hover:-translate-y-px active:translate-y-0" style="background: #1B5E3A;">Large</button>
+              <button class="px-4 py-2 text-sm font-semibold rounded-lg text-white opacity-50 cursor-not-allowed" style="background: #1B5E3A;" disabled>Disabled</button>
+              <button class="px-4 py-2 text-sm font-semibold rounded-lg text-white flex items-center gap-2 transition-all hover:opacity-90" style="background: #1B5E3A;">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                With Icon
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-xs uppercase tracking-wider font-semibold mb-4" style="color: var(--text-secondary);">Secondary</h3>
+            <div class="flex flex-wrap gap-3 items-center">
+              <button class="px-3 py-1.5 text-xs font-semibold rounded-md border-2 transition-all hover:bg-[var(--bg-muted)]" style="border-color: #1B5E3A; color: #1B5E3A; background: transparent;">Small</button>
+              <button class="px-4 py-2 text-sm font-semibold rounded-lg border-2 transition-all hover:bg-[var(--bg-muted)]" style="border-color: #1B5E3A; color: #1B5E3A; background: transparent;">Default</button>
+              <button class="px-6 py-3 text-base font-semibold rounded-lg border-2 transition-all hover:bg-[var(--bg-muted)]" style="border-color: #1B5E3A; color: #1B5E3A; background: transparent;">Large</button>
+              <button class="px-4 py-2 text-sm font-semibold rounded-lg border-2 opacity-50 cursor-not-allowed" style="border-color: #1B5E3A; color: #1B5E3A; background: transparent;" disabled>Disabled</button>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-xs uppercase tracking-wider font-semibold mb-4" style="color: var(--text-secondary);">Ghost</h3>
+            <div class="flex flex-wrap gap-3 items-center">
+              <button class="px-3 py-1.5 text-xs font-semibold rounded-md transition-all hover:bg-[var(--bg-muted)]" style="color: var(--text-primary);">Small</button>
+              <button class="px-4 py-2 text-sm font-semibold rounded-lg transition-all hover:bg-[var(--bg-muted)]" style="color: var(--text-primary);">Default</button>
+              <button class="px-6 py-3 text-base font-semibold rounded-lg transition-all hover:bg-[var(--bg-muted)]" style="color: var(--text-primary);">Large</button>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-xs uppercase tracking-wider font-semibold mb-4" style="color: var(--text-secondary);">Accent / Destructive</h3>
+            <div class="flex flex-wrap gap-3 items-center">
+              <button class="px-4 py-2 text-sm font-semibold rounded-lg text-white transition-all hover:opacity-90" style="background: #C9A032;">Golden Amber</button>
+              <button class="px-4 py-2 text-sm font-semibold rounded-lg text-white transition-all hover:opacity-90" style="background: #C07840;">Copper</button>
+              <button class="px-4 py-2 text-sm font-semibold rounded-lg text-white transition-all hover:opacity-90" style="background: #A05A30;">Sienna</button>
+              <button class="px-4 py-2 text-sm font-semibold rounded-lg text-white transition-all hover:opacity-90" style="background: #b91c1c;">Destructive</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Badges ─────────────────────────────── -->
+      <section id="badges">
+        <h2 class="text-xl font-semibold mb-1" style="color: var(--text-primary);">Badges &amp; Chips</h2>
+        <p class="text-sm mb-6" style="color: var(--text-secondary);">Status indicators, labels, and category tags.</p>
+        <div class="flex flex-wrap gap-3 items-center">
+          <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full text-white" style="background: #1B5E3A;">Forest</span>
+          <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full text-white" style="background: #4A7C4F;">Green</span>
+          <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full text-white" style="background: #C9A032;">Amber</span>
+          <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full text-white" style="background: #C07840;">Copper</span>
+          <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full" style="background: #E8F0E8; color: #1B5E3A;">Success</span>
+          <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full" style="background: #FEF3C7; color: #92400E;">Warning</span>
+          <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full" style="background: #FEE2E2; color: #991B1B;">Error</span>
+          <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full" style="background: var(--bg-muted); color: var(--text-secondary);">Neutral</span>
+          <span class="px-3 py-1 text-xs font-semibold rounded-md border-2" style="border-color: #1B5E3A; color: #1B5E3A;">Outlined</span>
+          <span class="px-3 py-1 text-xs font-semibold rounded-md border-2" style="border-color: #C9A032; color: #C9A032;">Gold Outlined</span>
+        </div>
+      </section>
+
+      <!-- ── Alerts ─────────────────────────────── -->
+      <section id="alerts">
+        <h2 class="text-xl font-semibold mb-1" style="color: var(--text-primary);">Alerts</h2>
+        <p class="text-sm mb-6" style="color: var(--text-secondary);">Contextual feedback messages for user actions and system events.</p>
+        <div class="space-y-3 max-w-2xl">
+          {[
+            { type: 'success', bg: '#F0FBF0', border: '#1B5E3A', text: '#1B5E3A', icon: '✓', title: 'Success', msg: 'Project saved successfully. All changes have been applied.' },
+            { type: 'warning', bg: '#FFFBEB', border: '#C9A032', text: '#92400E', icon: '⚠', title: 'Warning', msg: 'Your storage is at 85% capacity. Consider archiving older projects.' },
+            { type: 'error',   bg: '#FFF5F5', border: '#E53E3E', text: '#9B2C2C', icon: '✕', title: 'Error',   msg: 'Unable to connect to server. Please check your network connection.' },
+            { type: 'info',    bg: '#EFF6EF', border: '#4A7C4F', text: '#1B5E3A', icon: 'ℹ', title: 'Info',   msg: 'A new version of the design system is available. Update to v2.1.0.' },
+          ].map((a) => (
+            <div
+              class="flex gap-3 p-4 rounded-lg border"
+              style={`background: ${a.bg}; border-color: ${a.border};`}
+            >
+              <span class="text-lg leading-none mt-0.5 shrink-0" style={`color: ${a.border};`} aria-hidden="true">{a.icon}</span>
+              <div>
+                <p class="text-sm font-semibold" style={`color: ${a.text};`}>{a.title}</p>
+                <p class="text-sm mt-0.5" style={`color: ${a.text}; opacity: 0.8;`}>{a.msg}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- ── Forms ─────────────────────────────── -->
+      <section id="forms">
+        <h2 class="text-xl font-semibold mb-1" style="color: var(--text-primary);">Form Elements</h2>
+        <p class="text-sm mb-6" style="color: var(--text-secondary);">Text inputs, selects, checkboxes, radios, and textarea.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl">
+          <!-- Text inputs -->
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-semibold mb-1.5" style="color: var(--text-primary);" for="input-default">
+                Default Input
+              </label>
+              <input
+                id="input-default"
+                type="text"
+                placeholder="Enter project name…"
+                class="w-full px-3 py-2 text-sm rounded-lg border outline-none transition-all focus:ring-2 ring-[#1B5E3A] ring-offset-1"
+                style="background: var(--bg-surface); border-color: var(--border); color: var(--text-primary);"
+              />
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold mb-1.5" style="color: var(--text-primary);" for="input-error">
+                Error State
+              </label>
+              <input
+                id="input-error"
+                type="email"
+                value="invalid-email"
+                class="w-full px-3 py-2 text-sm rounded-lg border outline-none transition-all focus:ring-2 ring-red-400"
+                style="background: var(--bg-surface); border-color: #E53E3E; color: var(--text-primary);"
+              />
+              <p class="mt-1 text-xs" style="color: #E53E3E;">Please enter a valid email address.</p>
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold mb-1.5" style="color: var(--text-primary);" for="input-success">
+                Success State
+              </label>
+              <input
+                id="input-success"
+                type="text"
+                value="ACME Productions"
+                class="w-full px-3 py-2 text-sm rounded-lg border outline-none"
+                style="background: var(--bg-surface); border-color: #1B5E3A; color: var(--text-primary);"
+              />
+              <p class="mt-1 text-xs" style="color: #1B5E3A;">Company name is available.</p>
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold mb-1.5" style="color: var(--text-primary);" for="input-disabled">
+                Disabled
+              </label>
+              <input
+                id="input-disabled"
+                type="text"
+                value="Read only value"
+                disabled
+                class="w-full px-3 py-2 text-sm rounded-lg border cursor-not-allowed opacity-60"
+                style="background: var(--bg-muted); border-color: var(--border); color: var(--text-secondary);"
+              />
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold mb-1.5" style="color: var(--text-primary);" for="select-demo">
+                Select
+              </label>
+              <select
+                id="select-demo"
+                class="w-full px-3 py-2 text-sm rounded-lg border outline-none transition-all focus:ring-2 ring-[#1B5E3A]"
+                style="background: var(--bg-surface); border-color: var(--border); color: var(--text-primary);"
+              >
+                <option>Media Production</option>
+                <option>Broadcast</option>
+                <option>Film & TV</option>
+                <option>Live Events</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Checkboxes / Radios / Textarea -->
+          <div class="space-y-6">
+            <div>
+              <p class="text-sm font-semibold mb-3" style="color: var(--text-primary);">Checkboxes</p>
+              <div class="space-y-2">
+                {['4K Video Delivery', 'Cloud Storage', 'Live Streaming', 'Analytics Dashboard'].map((label, i) => (
+                  <label class="flex items-center gap-3 cursor-pointer group">
+                    <div
+                      class="w-4 h-4 rounded border-2 flex items-center justify-center shrink-0 transition-colors"
+                      style={i < 2 ? 'background: #1B5E3A; border-color: #1B5E3A;' : 'background: var(--bg-surface); border-color: var(--border);'}
+                    >
+                      {i < 2 && (
+                        <svg class="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                        </svg>
+                      )}
+                    </div>
+                    <span class="text-sm" style="color: var(--text-primary);">{label}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <p class="text-sm font-semibold mb-3" style="color: var(--text-primary);">Radio Buttons</p>
+              <div class="space-y-2">
+                {['Starter', 'Professional', 'Enterprise'].map((label, i) => (
+                  <label class="flex items-center gap-3 cursor-pointer">
+                    <div
+                      class="w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0"
+                      style={i === 1 ? 'border-color: #1B5E3A;' : 'border-color: var(--border);'}
+                    >
+                      {i === 1 && <div class="w-2 h-2 rounded-full" style="background: #1B5E3A;"></div>}
+                    </div>
+                    <span class="text-sm" style="color: var(--text-primary);">{label}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold mb-1.5" style="color: var(--text-primary);" for="textarea-demo">Textarea</label>
+              <textarea
+                id="textarea-demo"
+                rows={4}
+                placeholder="Tell us about your production workflow…"
+                class="w-full px-3 py-2 text-sm rounded-lg border outline-none transition-all focus:ring-2 ring-[#1B5E3A] resize-none"
+                style="background: var(--bg-surface); border-color: var(--border); color: var(--text-primary);"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Cards ─────────────────────────────── -->
+      <section id="cards">
+        <h2 class="text-xl font-semibold mb-1" style="color: var(--text-primary);">Cards</h2>
+        <p class="text-sm mb-6" style="color: var(--text-secondary);">Flexible content containers with multiple layout variants.</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- Basic card -->
+          <div
+            class="rounded-xl border p-5 card-hover"
+            style="background: var(--bg-surface); border-color: var(--border);"
+          >
+            <div class="w-10 h-10 rounded-lg mb-4 flex items-center justify-center text-white text-xl" style="background: #1B5E3A;">🌲</div>
+            <h3 class="font-semibold text-sm mb-1" style="color: var(--text-primary);">Forest Infrastructure</h3>
+            <p class="text-sm" style="color: var(--text-secondary);">Sustainable tech that grows with your production needs.</p>
+            <a href="#" class="mt-4 inline-flex items-center text-sm font-semibold gap-1 transition-colors hover:opacity-70" style="color: #1B5E3A;">
+              Learn more
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+            </a>
+          </div>
+
+          <!-- Image card -->
+          <div
+            class="rounded-xl border overflow-hidden card-hover"
+            style="background: var(--bg-surface); border-color: var(--border);"
+          >
+            <div class="h-36 w-full" style="background: linear-gradient(135deg, #1B5E3A 0%, #4A7C4F 100%); position: relative;">
+              <div class="absolute inset-0 flex items-center justify-center text-white/20 text-6xl font-bold">ACME</div>
+            </div>
+            <div class="p-5">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded-full text-white" style="background: #C9A032;">Featured</span>
+              <h3 class="font-semibold text-sm mt-2 mb-1" style="color: var(--text-primary);">ACME Productions Case Study</h3>
+              <p class="text-sm" style="color: var(--text-secondary);">How ACME streamlined their workflow with EcoByte infrastructure.</p>
+            </div>
+          </div>
+
+          <!-- Stat card -->
+          <div
+            class="rounded-xl border p-5"
+            style="background: var(--bg-surface); border-color: var(--border);"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-sm font-semibold" style="color: var(--text-secondary);">Monthly Revenue</span>
+              <span class="px-2 py-0.5 text-xs font-semibold rounded-full" style="background: #E8F0E8; color: #1B5E3A;">+12.4%</span>
+            </div>
+            <p class="text-3xl font-semibold mb-1" style="color: var(--text-primary);">€84,210</p>
+            <div class="h-1.5 rounded-full mt-4 overflow-hidden" style="background: var(--bg-muted);">
+              <div class="h-full rounded-full" style="width: 68%; background: #1B5E3A;"></div>
+            </div>
+            <p class="text-xs mt-2" style="color: var(--text-secondary);">68% of monthly target</p>
+          </div>
+
+          <!-- Horizontal card -->
+          <div
+            class="sm:col-span-2 rounded-xl border p-5 flex gap-4 card-hover"
+            style="background: var(--bg-surface); border-color: var(--border);"
+          >
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 text-white text-xl" style="background: linear-gradient(135deg, #C9A032, #C07840);">⚡</div>
+            <div>
+              <h3 class="font-semibold text-sm mb-1" style="color: var(--text-primary);">Horizontal Card Variant</h3>
+              <p class="text-sm" style="color: var(--text-secondary);">Works well for list items, notifications, and feature highlights with an icon/avatar on the left and content on the right.</p>
+              <div class="mt-3 flex gap-2">
+                <button class="text-xs font-semibold px-3 py-1 rounded-md text-white" style="background: #1B5E3A;">Action</button>
+                <button class="text-xs font-semibold px-3 py-1 rounded-md border" style="border-color: var(--border); color: var(--text-primary);">Dismiss</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Outline card -->
+          <div
+            class="rounded-xl border-2 p-5 card-hover"
+            style="border-color: #1B5E3A; background: transparent;"
+          >
+            <h3 class="font-semibold text-sm mb-1" style="color: #1B5E3A;">Outlined Card</h3>
+            <p class="text-sm" style="color: var(--text-secondary);">Use for selected states, active items, or to draw attention.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Navigation ─────────────────────────── -->
+      <section id="navigation">
+        <h2 class="text-xl font-semibold mb-1" style="color: var(--text-primary);">Navigation Patterns</h2>
+        <p class="text-sm mb-6" style="color: var(--text-secondary);">Tab bars, breadcrumbs, and sidebar navigation.</p>
+
+        <!-- Tabs -->
+        <div class="mb-8">
+          <h3 class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: var(--text-secondary);">Tabs</h3>
+          <div class="border-b" style="border-color: var(--border);">
+            <nav class="flex gap-1" aria-label="Tabs">
+              {['Overview', 'Analytics', 'Reports', 'Settings'].map((tab, i) => (
+                <button
+                  class={[
+                    'px-4 py-2.5 text-sm font-semibold border-b-2 transition-colors -mb-px',
+                    i === 0 ? '' : 'border-transparent',
+                  ].join(' ')}
+                  style={i === 0
+                    ? 'border-color: #1B5E3A; color: #1B5E3A;'
+                    : `color: var(--text-secondary); border-color: transparent;`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </nav>
+          </div>
+          <div class="pt-4 text-sm" style="color: var(--text-secondary);">Tab content area would go here.</div>
+        </div>
+
+        <!-- Breadcrumbs -->
+        <div class="mb-8">
+          <h3 class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: var(--text-secondary);">Breadcrumbs</h3>
+          <nav aria-label="Breadcrumb">
+            <ol class="flex items-center gap-1 text-sm flex-wrap">
+              {['EcoByte', 'ACME Dashboard', 'Projects', 'Video Campaign 2026'].map((crumb, i, arr) => (
+                <>
+                  <li>
+                    {i < arr.length - 1
+                      ? <a href="#" class="hover:underline transition-colors" style="color: #1B5E3A;">{crumb}</a>
+                      : <span style="color: var(--text-primary);">{crumb}</span>
+                    }
+                  </li>
+                  {i < arr.length - 1 && (
+                    <li aria-hidden="true" style="color: var(--text-secondary);">/</li>
+                  )}
+                </>
+              ))}
+            </ol>
+          </nav>
+        </div>
+
+        <!-- Pill Navigation -->
+        <div>
+          <h3 class="text-xs uppercase tracking-wider font-semibold mb-3" style="color: var(--text-secondary);">Pill Navigation</h3>
+          <nav class="flex flex-wrap gap-2">
+            {['All', 'Video', 'Audio', 'Live', 'Archive'].map((item, i) => (
+              <button
+                class="px-4 py-1.5 text-sm font-semibold rounded-full transition-colors"
+                style={i === 0
+                  ? 'background: #1B5E3A; color: white;'
+                  : 'background: var(--bg-muted); color: var(--text-secondary);'}
+              >
+                {item}
+              </button>
+            ))}
+          </nav>
+        </div>
+      </section>
+
+      <!-- ── Modal ──────────────────────────────── -->
+      <section id="modals">
+        <h2 class="text-xl font-semibold mb-1" style="color: var(--text-primary);">Modal &amp; Dialog</h2>
+        <p class="text-sm mb-6" style="color: var(--text-secondary);">Click the button to open a demo modal dialog.</p>
+
+        <button
+          id="open-modal"
+          class="px-4 py-2 text-sm font-semibold rounded-lg text-white transition-all hover:opacity-90"
+          style="background: #1B5E3A;"
+        >
+          Open Modal
+        </button>
+
+        <!-- Modal backdrop -->
+        <div
+          id="modal-backdrop"
+          class="fixed inset-0 z-50 hidden items-center justify-center p-4"
+          style="background: rgba(0,0,0,0.5);"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-title"
+        >
+          <div
+            class="w-full max-w-md rounded-2xl shadow-2xl"
+            style="background: var(--bg-surface);"
+          >
+            <div class="flex items-center justify-between p-6 border-b" style="border-color: var(--border);">
+              <h3 id="modal-title" class="text-base font-semibold" style="color: var(--text-primary);">Confirm Action</h3>
+              <button
+                id="close-modal"
+                class="p-1 rounded-lg hover:bg-[var(--bg-muted)] transition-colors"
+                style="color: var(--text-secondary);"
+                aria-label="Close modal"
+              >
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
+              </button>
+            </div>
+            <div class="p-6">
+              <p class="text-sm" style="color: var(--text-secondary);">
+                Are you sure you want to archive this project? All media files will be moved to cold storage.
+                This action can be undone within 30 days.
+              </p>
+            </div>
+            <div class="flex justify-end gap-3 p-6 pt-0">
+              <button
+                id="cancel-modal"
+                class="px-4 py-2 text-sm font-semibold rounded-lg border transition-colors hover:bg-[var(--bg-muted)]"
+                style="border-color: var(--border); color: var(--text-primary);"
+              >
+                Cancel
+              </button>
+              <button
+                class="px-4 py-2 text-sm font-semibold rounded-lg text-white transition-all hover:opacity-90"
+                style="background: #1B5E3A;"
+              >
+                Archive Project
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Tables ─────────────────────────────── -->
+      <section id="tables">
+        <h2 class="text-xl font-semibold mb-1" style="color: var(--text-primary);">Data Table</h2>
+        <p class="text-sm mb-6" style="color: var(--text-secondary);">Responsive table for displaying structured data.</p>
+
+        <div class="rounded-xl border overflow-hidden" style="border-color: var(--border);">
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr style="background: var(--bg-muted); border-bottom: 1px solid var(--border);">
+                  {['Project', 'Client', 'Status', 'Due Date', 'Revenue'].map((h) => (
+                    <th class="text-left px-4 py-3 text-xs font-semibold uppercase tracking-wider" style="color: var(--text-secondary);">{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody class="divide-y" style="divide-color: var(--border);">
+                {[
+                  { project: 'Brand Film 2026',    client: 'ACME Productions', status: 'Active',    date: '28 Feb 2026', rev: '€12,400' },
+                  { project: 'Product Launch',     client: 'GreenLeaf Co.',    status: 'Review',    date: '15 Mar 2026', rev: '€8,200' },
+                  { project: 'Annual Report',      client: 'Nordic Media AS',  status: 'Complete',  date: '10 Feb 2026', rev: '€5,600' },
+                  { project: 'Live Stream Series', client: 'ACME Productions', status: 'Active',    date: '30 Apr 2026', rev: '€18,900' },
+                  { project: 'Podcast Season 3',   client: 'AudioWave Ltd.',   status: 'Draft',     date: '01 Jun 2026', rev: '€3,100' },
+                ].map((row) => (
+                  <tr class="hover:bg-[var(--bg-muted)] transition-colors" style="background: var(--bg-surface);">
+                    <td class="px-4 py-3 font-semibold" style="color: var(--text-primary);">{row.project}</td>
+                    <td class="px-4 py-3" style="color: var(--text-secondary);">{row.client}</td>
+                    <td class="px-4 py-3">
+                      <span
+                        class="px-2 py-0.5 text-xs font-semibold rounded-full"
+                        style={
+                          row.status === 'Active'   ? 'background: #E8F0E8; color: #1B5E3A;' :
+                          row.status === 'Review'   ? 'background: #FEF3C7; color: #92400E;' :
+                          row.status === 'Complete' ? 'background: #E0F0F0; color: #065f6b;' :
+                          'background: var(--bg-muted); color: var(--text-secondary);'
+                        }
+                      >
+                        {row.status}
+                      </span>
+                    </td>
+                    <td class="px-4 py-3" style="color: var(--text-secondary);">{row.date}</td>
+                    <td class="px-4 py-3 font-semibold" style="color: var(--text-primary);">{row.rev}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /space-y-16 -->
+  </div>
+</BaseLayout>
+
+<script>
+  const openBtn = document.getElementById('open-modal');
+  const backdrop = document.getElementById('modal-backdrop');
+  const closeBtn = document.getElementById('close-modal');
+  const cancelBtn = document.getElementById('cancel-modal');
+
+  function openModal() {
+    backdrop?.classList.remove('hidden');
+    backdrop?.classList.add('flex');
+  }
+  function closeModal() {
+    backdrop?.classList.add('hidden');
+    backdrop?.classList.remove('flex');
+  }
+
+  openBtn?.addEventListener('click', openModal);
+  closeBtn?.addEventListener('click', closeModal);
+  cancelBtn?.addEventListener('click', closeModal);
+  backdrop?.addEventListener('click', (e) => {
+    if (e.target === backdrop) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+</script>

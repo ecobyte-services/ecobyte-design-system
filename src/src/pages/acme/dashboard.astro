@@ -1,0 +1,356 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const stats = [
+  { label: 'Total Revenue',  value: '€284,120', change: '+12.4%', up: true,  icon: '💰', color: '#1B5E3A' },
+  { label: 'Active Projects',value: '24',       change: '+3',     up: true,  icon: '🎬', color: '#4A7C4F' },
+  { label: 'Storage Used',   value: '18.4 TB',  change: '+2.1 TB',up: false, icon: '💾', color: '#C9A032' },
+  { label: 'Team Members',   value: '38',       change: '+5',     up: true,  icon: '👥', color: '#C07840' },
+];
+
+const projects = [
+  { name: 'Brand Film 2026',      client: 'ACME Productions', progress: 78, status: 'On Track',  due: '28 Feb',  rev: '€12,400' },
+  { name: 'Product Launch Video', client: 'GreenLeaf Co.',    progress: 45, status: 'At Risk',   due: '15 Mar',  rev: '€8,200'  },
+  { name: 'Annual Report',        client: 'Nordic Media AS',  progress: 100,status: 'Complete',  due: '10 Feb',  rev: '€5,600'  },
+  { name: 'Live Stream Series',   client: 'ACME Productions', progress: 20, status: 'On Track',  due: '30 Apr',  rev: '€18,900' },
+  { name: 'Podcast Season 3',     client: 'AudioWave Ltd.',   progress: 10, status: 'Planning',  due: '01 Jun',  rev: '€3,100'  },
+];
+
+const activity = [
+  { user: 'SA', name: 'Siri Andersen',    action: 'uploaded 47 new dailies',     time: '2 min ago',  color: '#1B5E3A' },
+  { user: 'LH', name: 'Lars Haugen',      action: 'approved final cut v3',        time: '18 min ago', color: '#C9A032' },
+  { user: 'MO', name: 'Maria Olsen',      action: 'added comment on color grade', time: '1 hr ago',   color: '#C07840' },
+  { user: 'EK', name: 'Erik Karlsson',    action: 'exported 4K master file',      time: '2 hr ago',   color: '#4A7C4F' },
+  { user: 'PB', name: 'Petra Bjørnstad', action: 'invited new collaborator',     time: '3 hr ago',   color: '#8B8C3E' },
+];
+
+// Bar chart data: monthly revenue last 6 months (normalized to %)
+const barData = [
+  { month: 'Sep', value: 58, raw: '€58k' },
+  { month: 'Oct', value: 74, raw: '€74k' },
+  { month: 'Nov', value: 62, raw: '€62k' },
+  { month: 'Dec', value: 88, raw: '€88k' },
+  { month: 'Jan', value: 71, raw: '€71k' },
+  { month: 'Feb', value: 84, raw: '€84k' },
+];
+
+const sidebarLinks = [
+  { href: '/acme/dashboard', icon: '⊞', label: 'Dashboard', active: true },
+  { href: '#', icon: '🎬', label: 'Projects', active: false },
+  { href: '#', icon: '📁', label: 'Assets', active: false },
+  { href: '#', icon: '👥', label: 'Team', active: false },
+  { href: '#', icon: '📊', label: 'Analytics', active: false },
+  { href: '#', icon: '💳', label: 'Billing', active: false },
+  { href: '#', icon: '⚙️', label: 'Settings', active: false },
+];
+---
+
+<BaseLayout title="ACME Dashboard" description="ACME Productions admin dashboard — EcoByte design system demo">
+  <div class="flex min-h-screen" style="background: var(--bg-base);">
+
+    <!-- ── Sidebar ───────────────────────────────── -->
+    <aside
+      class="w-56 shrink-0 border-r hidden lg:flex flex-col sticky top-[57px] h-[calc(100vh-57px)] overflow-y-auto"
+      style="background: var(--bg-surface); border-color: var(--border);"
+    >
+      <!-- Brand -->
+      <div class="px-4 py-5 border-b" style="border-color: var(--border);">
+        <p class="text-xs font-semibold uppercase tracking-wider mb-1" style="color: var(--text-secondary);">Workspace</p>
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-md flex items-center justify-center text-white text-xs font-bold" style="background: #1B5E3A;">A</div>
+          <span class="text-sm font-semibold" style="color: var(--text-primary);">ACME Productions</span>
+        </div>
+      </div>
+
+      <!-- Nav links -->
+      <nav class="flex-1 px-2 py-4 space-y-0.5" aria-label="Dashboard navigation">
+        {sidebarLinks.map((link) => (
+          <a
+            href={link.href}
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors"
+            style={link.active
+              ? 'background: #1B5E3A; color: white;'
+              : `color: var(--text-secondary); background: transparent;`}
+            aria-current={link.active ? 'page' : undefined}
+          >
+            <span class="w-4 text-center" aria-hidden="true">{link.icon}</span>
+            {link.label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Bottom: user -->
+      <div class="border-t p-4" style="border-color: var(--border);">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white" style="background: #C9A032;">MO</div>
+          <div class="min-w-0">
+            <p class="text-xs font-semibold truncate" style="color: var(--text-primary);">Maria Olsen</p>
+            <p class="text-xs truncate" style="color: var(--text-secondary);">CEO</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ── Main content ─────────────────────────── -->
+    <div class="flex-1 min-w-0">
+      <!-- Page header -->
+      <div
+        class="border-b px-6 py-5 flex items-center justify-between gap-4"
+        style="background: var(--bg-surface); border-color: var(--border);"
+      >
+        <div>
+          <h1 class="text-xl font-semibold" style="color: var(--text-primary);">Dashboard</h1>
+          <p class="text-sm" style="color: var(--text-secondary);">Good morning, Maria — here's what's happening.</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button
+            class="px-4 py-2 text-sm font-semibold rounded-lg text-white flex items-center gap-2"
+            style="background: #1B5E3A;"
+          >
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+            New Project
+          </button>
+        </div>
+      </div>
+
+      <div class="p-6 space-y-8">
+
+        <!-- ── Stats cards ────────────────────────── -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {stats.map((s) => (
+            <div
+              class="rounded-xl border p-4"
+              style="background: var(--bg-surface); border-color: var(--border);"
+            >
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-semibold uppercase tracking-wider" style="color: var(--text-secondary);">{s.label}</span>
+                <div
+                  class="w-8 h-8 rounded-lg flex items-center justify-center text-base"
+                  style={`background: ${s.color}22;`}
+                  aria-hidden="true"
+                >
+                  {s.icon}
+                </div>
+              </div>
+              <p class="text-2xl font-semibold mb-1" style="color: var(--text-primary);">{s.value}</p>
+              <span
+                class="text-xs font-semibold px-1.5 py-0.5 rounded"
+                style={s.up
+                  ? 'background: #E8F0E8; color: #1B5E3A;'
+                  : 'background: #FEF3C7; color: #92400E;'}
+              >
+                {s.up ? '↑' : '↓'} {s.change}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <!-- ── Charts row ─────────────────────────── -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+          <!-- Bar chart: Revenue -->
+          <div
+            class="lg:col-span-2 rounded-xl border p-5"
+            style="background: var(--bg-surface); border-color: var(--border);"
+          >
+            <div class="flex items-center justify-between mb-6">
+              <div>
+                <h2 class="text-sm font-semibold" style="color: var(--text-primary);">Monthly Revenue</h2>
+                <p class="text-xs" style="color: var(--text-secondary);">Last 6 months</p>
+              </div>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded-full" style="background: #E8F0E8; color: #1B5E3A;">+18.3% YoY</span>
+            </div>
+
+            <!-- Bar chart (pure CSS) -->
+            <div class="flex items-end gap-3 h-40">
+              {barData.map((bar) => (
+                <div class="flex-1 flex flex-col items-center gap-2">
+                  <span class="text-xs font-semibold" style="color: var(--text-secondary);">{bar.raw}</span>
+                  <div
+                    class="w-full rounded-t-md transition-all"
+                    style={`height: ${bar.value}%; background: linear-gradient(to top, #1B5E3A, #4A7C4F);`}
+                    role="img"
+                    aria-label={`${bar.month}: ${bar.raw}`}
+                  ></div>
+                  <span class="text-xs" style="color: var(--text-secondary);">{bar.month}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Donut: Storage breakdown (pure CSS) -->
+          <div
+            class="rounded-xl border p-5"
+            style="background: var(--bg-surface); border-color: var(--border);"
+          >
+            <div class="mb-4">
+              <h2 class="text-sm font-semibold" style="color: var(--text-primary);">Storage Breakdown</h2>
+              <p class="text-xs" style="color: var(--text-secondary);">18.4 TB of 25 TB used</p>
+            </div>
+
+            <!-- CSS conic-gradient donut -->
+            <div class="flex items-center justify-center mb-4">
+              <div class="relative w-28 h-28">
+                <div
+                  class="w-28 h-28 rounded-full"
+                  style="background: conic-gradient(#1B5E3A 0% 45%, #C9A032 45% 65%, #C07840 65% 75%, #7A9A5E 75% 100%);"
+                  role="img"
+                  aria-label="Storage breakdown donut chart"
+                ></div>
+                <div
+                  class="absolute inset-3 rounded-full flex items-center justify-center"
+                  style="background: var(--bg-surface);"
+                >
+                  <span class="text-sm font-semibold" style="color: var(--text-primary);">74%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              {[
+                { label: 'Raw footage', pct: '45%', color: '#1B5E3A' },
+                { label: 'Exports',     pct: '20%', color: '#C9A032' },
+                { label: 'Archives',    pct: '10%', color: '#C07840' },
+                { label: 'Other',       pct: '25%', color: '#7A9A5E' },
+              ].map((item) => (
+                <div class="flex items-center gap-2 text-xs">
+                  <div class="w-2.5 h-2.5 rounded-sm shrink-0" style={`background: ${item.color};`}></div>
+                  <span class="flex-1" style="color: var(--text-secondary);">{item.label}</span>
+                  <span class="font-semibold" style="color: var(--text-primary);">{item.pct}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Projects table ─────────────────────── -->
+        <div
+          class="rounded-xl border overflow-hidden"
+          style="background: var(--bg-surface); border-color: var(--border);"
+        >
+          <div class="flex items-center justify-between px-5 py-4 border-b" style="border-color: var(--border);">
+            <h2 class="text-sm font-semibold" style="color: var(--text-primary);">Active Projects</h2>
+            <a href="#" class="text-xs font-semibold" style="color: #1B5E3A;">View all →</a>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr style="background: var(--bg-muted); border-bottom: 1px solid var(--border);">
+                  {['Project', 'Client', 'Progress', 'Status', 'Due', 'Revenue'].map((h) => (
+                    <th class="text-left px-4 py-3 text-xs font-semibold uppercase tracking-wider" style="color: var(--text-secondary);">{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody class="divide-y" style="divide-color: var(--border);">
+                {projects.map((p) => (
+                  <tr class="hover:bg-[var(--bg-muted)] transition-colors">
+                    <td class="px-4 py-3 font-semibold" style="color: var(--text-primary);">{p.name}</td>
+                    <td class="px-4 py-3 text-xs" style="color: var(--text-secondary);">{p.client}</td>
+                    <td class="px-4 py-3">
+                      <div class="flex items-center gap-2">
+                        <div class="flex-1 h-1.5 rounded-full" style="background: var(--bg-muted); min-width: 60px;">
+                          <div
+                            class="h-full rounded-full"
+                            style={`width: ${p.progress}%; background: ${p.progress === 100 ? '#1B5E3A' : p.status === 'At Risk' ? '#C9A032' : '#1B5E3A'};`}
+                          ></div>
+                        </div>
+                        <span class="text-xs font-semibold w-8" style="color: var(--text-secondary);">{p.progress}%</span>
+                      </div>
+                    </td>
+                    <td class="px-4 py-3">
+                      <span
+                        class="px-2 py-0.5 text-xs font-semibold rounded-full"
+                        style={
+                          p.status === 'On Track'  ? 'background: #E8F0E8; color: #1B5E3A;' :
+                          p.status === 'At Risk'   ? 'background: #FEF3C7; color: #92400E;' :
+                          p.status === 'Complete'  ? 'background: #E0F0F0; color: #065f6b;' :
+                          'background: var(--bg-muted); color: var(--text-secondary);'
+                        }
+                      >
+                        {p.status}
+                      </span>
+                    </td>
+                    <td class="px-4 py-3 text-xs" style="color: var(--text-secondary);">{p.due}</td>
+                    <td class="px-4 py-3 text-xs font-semibold" style="color: var(--text-primary);">{p.rev}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ── Activity feed + quick actions ─────── -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+          <!-- Activity feed -->
+          <div
+            class="lg:col-span-2 rounded-xl border p-5"
+            style="background: var(--bg-surface); border-color: var(--border);"
+          >
+            <h2 class="text-sm font-semibold mb-5" style="color: var(--text-primary);">Recent Activity</h2>
+            <ul class="space-y-4" role="list">
+              {activity.map((a) => (
+                <li class="flex items-start gap-3">
+                  <div
+                    class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0 mt-0.5"
+                    style={`background: ${a.color};`}
+                    aria-hidden="true"
+                  >
+                    {a.user}
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-sm" style="color: var(--text-primary);">
+                      <span class="font-semibold">{a.name}</span>
+                      {' '}{a.action}
+                    </p>
+                    <p class="text-xs mt-0.5" style="color: var(--text-secondary);">{a.time}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Quick actions -->
+          <div
+            class="rounded-xl border p-5"
+            style="background: var(--bg-surface); border-color: var(--border);"
+          >
+            <h2 class="text-sm font-semibold mb-5" style="color: var(--text-primary);">Quick Actions</h2>
+            <div class="space-y-2">
+              {[
+                { icon: '⬆️', label: 'Upload Assets',    color: '#1B5E3A' },
+                { icon: '🔗', label: 'Share Project',    color: '#4A7C4F' },
+                { icon: '📋', label: 'Generate Report',  color: '#C9A032' },
+                { icon: '👤', label: 'Invite Team',      color: '#C07840' },
+                { icon: '🔒', label: 'Review Access',    color: '#7A9A5E' },
+              ].map((action) => (
+                <button
+                  class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg border text-sm font-medium text-left transition-colors hover:bg-[var(--bg-muted)]"
+                  style="border-color: var(--border); color: var(--text-primary); background: transparent;"
+                >
+                  <span aria-hidden="true">{action.icon}</span>
+                  {action.label}
+                </button>
+              ))}
+            </div>
+
+            <!-- Storage widget -->
+            <div class="mt-6 pt-5 border-t" style="border-color: var(--border);">
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-xs font-semibold" style="color: var(--text-secondary);">Storage</span>
+                <span class="text-xs font-semibold" style="color: var(--text-primary);">18.4 / 25 TB</span>
+              </div>
+              <div class="h-2 rounded-full overflow-hidden" style="background: var(--bg-muted);">
+                <div class="h-full rounded-full" style="width: 73.6%; background: linear-gradient(90deg, #1B5E3A, #4A7C4F);"></div>
+              </div>
+              <p class="text-xs mt-1.5" style="color: var(--text-secondary);">6.6 TB remaining</p>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /p-6 -->
+    </div><!-- /main -->
+  </div><!-- /flex -->
+</BaseLayout>

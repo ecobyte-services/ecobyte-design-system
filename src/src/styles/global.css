@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap');
+@import "tailwindcss";
+
+/* ─── Custom dark variant (class-based) ─── */
+@custom-variant dark (&:is(.dark *));
+
+/* ─── EcoByte Design Tokens ─── */
+@theme {
+  /* Canopy Greens */
+  --color-forest:       #1B5E3A;
+  --color-med-green:    #4A7C4F;
+  --color-sage:         #7A9A5E;
+  --color-olive:        #8B8C3E;
+  --color-gold:         #C9A032;
+
+  /* Roots / Copper */
+  --color-copper-light: #D4945A;
+  --color-copper:       #C07840;
+  --color-sienna:       #A05A30;
+  --color-brown:        #7A5030;
+
+  /* Neutral */
+  --color-charcoal:     #333333;
+  --color-warm-grey:    #888888;
+  --color-off-white:    #F8F8F6;
+
+  /* Typography */
+  --font-sans: 'Nunito Sans', system-ui, -apple-system, sans-serif;
+
+  /* Border radius */
+  --radius-sm:  0.25rem;
+  --radius:     0.5rem;
+  --radius-lg:  0.75rem;
+  --radius-xl:  1rem;
+  --radius-2xl: 1.5rem;
+}
+
+/* ─── Semantic CSS Variables (light / dark) ─── */
+:root {
+  --bg-base:       #F8F8F6;
+  --bg-surface:    #FFFFFF;
+  --bg-muted:      #EEEEE8;
+  --text-primary:  #333333;
+  --text-secondary:#888888;
+  --text-inverse:  #F8F8F6;
+  --border:        #D8D8D0;
+  --border-subtle: #EBEBЕ8;
+  color-scheme: light;
+}
+
+.dark {
+  --bg-base:       #141917;
+  --bg-surface:    #1C2320;
+  --bg-muted:      #242C28;
+  --text-primary:  #F0F0EC;
+  --text-secondary:#8A9A8E;
+  --text-inverse:  #141917;
+  --border:        #2A3630;
+  --border-subtle: #232E28;
+  color-scheme: dark;
+}
+
+/* ─── Base Styles ─── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  margin: 0;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-muted); }
+::-webkit-scrollbar-thumb { background: #1B5E3A; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #4A7C4F; }
+
+/* ─── Focus ring ─── */
+:focus-visible {
+  outline: 2px solid #1B5E3A;
+  outline-offset: 2px;
+}
+
+/* ─── Selection ─── */
+::selection {
+  background-color: #1B5E3A;
+  color: #F8F8F6;
+}
+
+/* ─── Typography helpers ─── */
+.text-balance { text-wrap: balance; }
+.text-pretty  { text-wrap: pretty; }
+
+/* ─── Smooth card hover ─── */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(27, 94, 58, 0.12);
+}
+
+/* ─── Gradient helpers ─── */
+.gradient-forest {
+  background: linear-gradient(135deg, #1B5E3A 0%, #4A7C4F 100%);
+}
+.gradient-gold {
+  background: linear-gradient(135deg, #C9A032 0%, #D4945A 100%);
+}
+
+/* ─── Code blocks ─── */
+code {
+  font-family: 'Fira Code', 'Cascadia Code', ui-monospace, monospace;
+  font-size: 0.875em;
+  background: var(--bg-muted);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--border);
+}

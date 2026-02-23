@@ -1,0 +1,71 @@
+---
+import Nav from '@/components/Nav.astro';
+import Footer from '@/components/Footer.astro';
+import '@/styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  bodyClass?: string;
+}
+
+const {
+  title,
+  description = 'EcoByte AS — Premium sustainable infrastructure for the production industry.',
+  bodyClass = '',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href="/brand/logo/ecobyte-as-color-symbol-transparent.png" />
+    <title>{title} — EcoByte Design System</title>
+
+    <!-- Prevent dark mode flash -->
+    <script is:inline>
+      (function () {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+
+  <body class={bodyClass}>
+    <Nav />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      // Dark mode toggle — global handler
+      document.addEventListener('click', (e) => {
+        const btn = (e.target as HTMLElement).closest('[data-dark-toggle]');
+        if (!btn) return;
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+
+      // Copy-to-clipboard for color swatches
+      document.addEventListener('click', (e) => {
+        const swatch = (e.target as HTMLElement).closest('[data-copy]');
+        if (!swatch) return;
+        const text = swatch.getAttribute('data-copy') ?? '';
+        navigator.clipboard.writeText(text).then(() => {
+          const tip = swatch.querySelector('[data-copy-tip]');
+          if (tip) {
+            tip.textContent = 'Copied!';
+            setTimeout(() => { tip.textContent = text; }, 1500);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
