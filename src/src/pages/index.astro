@@ -102,17 +102,17 @@ const spacingScale = [2, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64];
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {[
           {
-            icon: '🌲',
+            icon: 'park',
             title: 'Nature-meets-technology',
             desc: 'Our palette draws from the forest canopy above and circuit roots below — organic warmth meets technical precision.',
           },
           {
-            icon: '⚡',
+            icon: 'bolt',
             title: 'Professional & warm',
             desc: 'Confident without arrogance. Technically competent but understandable. "We understand your world."',
           },
           {
-            icon: '♿',
+            icon: 'accessibility_new',
             title: 'Accessible by default',
             desc: 'Every color pair meets WCAG AA contrast. Semantic HTML. Keyboard navigable. Dark mode built-in.',
           },
@@ -121,7 +121,7 @@ const spacingScale = [2, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64];
             class="rounded-xl p-6 border card-hover"
             style="background: var(--bg-surface); border-color: var(--border);"
           >
-            <div class="text-3xl mb-3" aria-hidden="true">{card.icon}</div>
+            <div class="mb-3" aria-hidden="true"><span class="material-symbols-outlined" style="font-size: 36px; color: #4A7C4F;">{card.icon}</span></div>
             <h3 class="font-semibold text-base mb-2" style="color: var(--text-primary);">{card.title}</h3>
             <p class="text-sm" style="color: var(--text-secondary);">{card.desc}</p>
           </div>

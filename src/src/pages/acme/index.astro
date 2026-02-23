@@ -3,32 +3,32 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
 const features = [
   {
-    icon: '🎬',
+    icon: 'movie',
     title: '4K Cloud Delivery',
     desc: 'Stream your highest-quality masters directly from our geo-distributed network. Zero buffering, instant playback worldwide.',
   },
   {
-    icon: '🔒',
+    icon: 'lock',
     title: 'Zero-Trust Security',
     desc: 'Every frame encrypted in transit and at rest. Granular access control per project, per collaborator, per deadline.',
   },
   {
-    icon: '⚡',
+    icon: 'bolt',
     title: 'Real-Time Collaboration',
     desc: 'Edit together in real time. Your director in Oslo sees the same frame as your VFX team in London — instantly.',
   },
   {
-    icon: '🌍',
+    icon: 'public',
     title: 'Global Edge Network',
     desc: 'Forty points of presence across Europe and North America. Your assets are always milliseconds away from your team.',
   },
   {
-    icon: '📊',
+    icon: 'monitoring',
     title: 'Production Analytics',
     desc: 'Track delivery, viewing engagement, and storage trends. Make data-driven decisions on every production.',
   },
   {
-    icon: '♻️',
+    icon: 'recycling',
     title: 'Carbon-Neutral Infra',
     desc: '100% renewable energy. Verified offset credits. ESG reporting built into every invoice — because your brand deserves it.',
   },
@@ -245,10 +245,10 @@ const plans = [
             style="background: var(--bg-surface); border-color: var(--border);"
           >
             <div
-              class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-5"
+              class="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
               style="background: linear-gradient(135deg, #1B5E3A, #4A7C4F);"
             >
-              {f.icon}
+              <span class="material-symbols-outlined" style="font-size: 28px; color: white;">{f.icon}</span>
             </div>
             <h3 class="font-semibold text-base mb-2" style="color: var(--text-primary);">{f.title}</h3>
             <p class="text-sm" style="color: var(--text-secondary);">{f.desc}</p>

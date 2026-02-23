@@ -93,16 +93,16 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         <p class="text-sm mb-6" style="color: var(--text-secondary);">Contextual feedback messages for user actions and system events.</p>
         <div class="space-y-3 max-w-2xl">
           {[
-            { type: 'success', bg: '#F0FBF0', border: '#1B5E3A', text: '#1B5E3A', icon: '✓', title: 'Success', msg: 'Project saved successfully. All changes have been applied.' },
-            { type: 'warning', bg: '#FFFBEB', border: '#C9A032', text: '#92400E', icon: '⚠', title: 'Warning', msg: 'Your storage is at 85% capacity. Consider archiving older projects.' },
-            { type: 'error',   bg: '#FFF5F5', border: '#E53E3E', text: '#9B2C2C', icon: '✕', title: 'Error',   msg: 'Unable to connect to server. Please check your network connection.' },
-            { type: 'info',    bg: '#EFF6EF', border: '#4A7C4F', text: '#1B5E3A', icon: 'ℹ', title: 'Info',   msg: 'A new version of the design system is available. Update to v2.1.0.' },
+            { type: 'success', bg: '#F0FBF0', border: '#1B5E3A', text: '#1B5E3A', icon: 'check_circle', title: 'Success', msg: 'Project saved successfully. All changes have been applied.' },
+            { type: 'warning', bg: '#FFFBEB', border: '#C9A032', text: '#92400E', icon: 'warning',      title: 'Warning', msg: 'Your storage is at 85% capacity. Consider archiving older projects.' },
+            { type: 'error',   bg: '#FFF5F5', border: '#E53E3E', text: '#9B2C2C', icon: 'cancel',       title: 'Error',   msg: 'Unable to connect to server. Please check your network connection.' },
+            { type: 'info',    bg: '#EFF6EF', border: '#4A7C4F', text: '#1B5E3A', icon: 'info',         title: 'Info',   msg: 'A new version of the design system is available. Update to v2.1.0.' },
           ].map((a) => (
             <div
               class="flex gap-3 p-4 rounded-lg border"
               style={`background: ${a.bg}; border-color: ${a.border};`}
             >
-              <span class="text-lg leading-none mt-0.5 shrink-0" style={`color: ${a.border};`} aria-hidden="true">{a.icon}</span>
+              <span class="material-symbols-outlined shrink-0" style={`font-size: 20px; color: ${a.border};`} aria-hidden="true">{a.icon}</span>
               <div>
                 <p class="text-sm font-semibold" style={`color: ${a.text};`}>{a.title}</p>
                 <p class="text-sm mt-0.5" style={`color: ${a.text}; opacity: 0.8;`}>{a.msg}</p>
@@ -257,7 +257,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
             class="rounded-xl border p-5 card-hover"
             style="background: var(--bg-surface); border-color: var(--border);"
           >
-            <div class="w-10 h-10 rounded-lg mb-4 flex items-center justify-center text-white text-xl" style="background: #1B5E3A;">🌲</div>
+            <div class="w-10 h-10 rounded-lg mb-4 flex items-center justify-center" style="background: #1B5E3A;"><span class="material-symbols-outlined" style="font-size: 20px; color: white;">park</span></div>
             <h3 class="font-semibold text-sm mb-1" style="color: var(--text-primary);">Forest Infrastructure</h3>
             <p class="text-sm" style="color: var(--text-secondary);">Sustainable tech that grows with your production needs.</p>
             <a href="#" class="mt-4 inline-flex items-center text-sm font-semibold gap-1 transition-colors hover:opacity-70" style="color: #1B5E3A;">
@@ -302,7 +302,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
             class="sm:col-span-2 rounded-xl border p-5 flex gap-4 card-hover"
             style="background: var(--bg-surface); border-color: var(--border);"
           >
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 text-white text-xl" style="background: linear-gradient(135deg, #C9A032, #C07840);">⚡</div>
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style="background: linear-gradient(135deg, #C9A032, #C07840);"><span class="material-symbols-outlined" style="font-size: 24px; color: white;">bolt</span></div>
             <div>
               <h3 class="font-semibold text-sm mb-1" style="color: var(--text-primary);">Horizontal Card Variant</h3>
               <p class="text-sm" style="color: var(--text-secondary);">Works well for list items, notifications, and feature highlights with an icon/avatar on the left and content on the right.</p>

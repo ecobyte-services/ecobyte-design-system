@@ -2,10 +2,10 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
 const stats = [
-  { label: 'Total Revenue',  value: '€284,120', change: '+12.4%', up: true,  icon: '💰', color: '#1B5E3A' },
-  { label: 'Active Projects',value: '24',       change: '+3',     up: true,  icon: '🎬', color: '#4A7C4F' },
-  { label: 'Storage Used',   value: '18.4 TB',  change: '+2.1 TB',up: false, icon: '💾', color: '#C9A032' },
-  { label: 'Team Members',   value: '38',       change: '+5',     up: true,  icon: '👥', color: '#C07840' },
+  { label: 'Total Revenue',  value: '€284,120', change: '+12.4%', up: true,  icon: 'payments', color: '#1B5E3A' },
+  { label: 'Active Projects',value: '24',       change: '+3',     up: true,  icon: 'movie',    color: '#4A7C4F' },
+  { label: 'Storage Used',   value: '18.4 TB',  change: '+2.1 TB',up: false, icon: 'storage',  color: '#C9A032' },
+  { label: 'Team Members',   value: '38',       change: '+5',     up: true,  icon: 'group',    color: '#C07840' },
 ];
 
 const projects = [
@@ -35,13 +35,13 @@ const barData = [
 ];
 
 const sidebarLinks = [
-  { href: '/acme/dashboard', icon: '⊞', label: 'Dashboard', active: true },
-  { href: '#', icon: '🎬', label: 'Projects', active: false },
-  { href: '#', icon: '📁', label: 'Assets', active: false },
-  { href: '#', icon: '👥', label: 'Team', active: false },
-  { href: '#', icon: '📊', label: 'Analytics', active: false },
-  { href: '#', icon: '💳', label: 'Billing', active: false },
-  { href: '#', icon: '⚙️', label: 'Settings', active: false },
+  { href: '/acme/dashboard', icon: 'grid_view',    label: 'Dashboard', active: true },
+  { href: '#', icon: 'movie',          label: 'Projects',  active: false },
+  { href: '#', icon: 'folder',         label: 'Assets',    active: false },
+  { href: '#', icon: 'group',          label: 'Team',      active: false },
+  { href: '#', icon: 'monitoring',     label: 'Analytics', active: false },
+  { href: '#', icon: 'credit_card',    label: 'Billing',   active: false },
+  { href: '#', icon: 'settings',       label: 'Settings',  active: false },
 ];
 ---
 
@@ -73,7 +73,7 @@ const sidebarLinks = [
               : `color: var(--text-secondary); background: transparent;`}
             aria-current={link.active ? 'page' : undefined}
           >
-            <span class="w-4 text-center" aria-hidden="true">{link.icon}</span>
+            <span class="material-symbols-outlined" aria-hidden="true" style="font-size: 18px;">{link.icon}</span>
             {link.label}
           </a>
         ))}
@@ -127,11 +127,11 @@ const sidebarLinks = [
               <div class="flex items-center justify-between mb-3">
                 <span class="text-xs font-semibold uppercase tracking-wider" style="color: var(--text-secondary);">{s.label}</span>
                 <div
-                  class="w-8 h-8 rounded-lg flex items-center justify-center text-base"
+                  class="w-8 h-8 rounded-lg flex items-center justify-center"
                   style={`background: ${s.color}22;`}
                   aria-hidden="true"
                 >
-                  {s.icon}
+                  <span class="material-symbols-outlined" style={`font-size: 18px; color: ${s.color};`}>{s.icon}</span>
                 </div>
               </div>
               <p class="text-2xl font-semibold mb-1" style="color: var(--text-primary);">{s.value}</p>
@@ -320,17 +320,17 @@ const sidebarLinks = [
             <h2 class="text-sm font-semibold mb-5" style="color: var(--text-primary);">Quick Actions</h2>
             <div class="space-y-2">
               {[
-                { icon: '⬆️', label: 'Upload Assets',    color: '#1B5E3A' },
-                { icon: '🔗', label: 'Share Project',    color: '#4A7C4F' },
-                { icon: '📋', label: 'Generate Report',  color: '#C9A032' },
-                { icon: '👤', label: 'Invite Team',      color: '#C07840' },
-                { icon: '🔒', label: 'Review Access',    color: '#7A9A5E' },
+                { icon: 'upload',     label: 'Upload Assets',   color: '#1B5E3A' },
+                { icon: 'link',      label: 'Share Project',   color: '#4A7C4F' },
+                { icon: 'assignment',label: 'Generate Report', color: '#C9A032' },
+                { icon: 'person_add',label: 'Invite Team',     color: '#C07840' },
+                { icon: 'lock',      label: 'Review Access',   color: '#7A9A5E' },
               ].map((action) => (
                 <button
                   class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg border text-sm font-medium text-left transition-colors hover:bg-[var(--bg-muted)]"
                   style="border-color: var(--border); color: var(--text-primary); background: transparent;"
                 >
-                  <span aria-hidden="true">{action.icon}</span>
+                  <span class="material-symbols-outlined" aria-hidden="true" style={`font-size: 20px; color: ${action.color};`}>{action.icon}</span>
                   {action.label}
                 </button>
               ))}

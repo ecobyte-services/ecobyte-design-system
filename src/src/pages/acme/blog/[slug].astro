@@ -160,10 +160,10 @@ const relatedPosts = Object.entries(articles)
           </div>
 
           <div class="mt-6 border-t border-b py-4" style="border-color: var(--border);">
-            <div class="flex gap-6 text-xs" style="color: var(--text-secondary);">
-              <span>📖 {article.readTime}</span>
-              <span>🏷️ {article.category}</span>
-              <span>📅 {article.date}</span>
+            <div class="flex gap-6 text-xs items-center" style="color: var(--text-secondary);">
+              <span class="inline-flex items-center gap-1"><span class="material-symbols-outlined" style="font-size: 16px; vertical-align: middle;">menu_book</span> {article.readTime}</span>
+              <span class="inline-flex items-center gap-1"><span class="material-symbols-outlined" style="font-size: 16px; vertical-align: middle;">label</span> {article.category}</span>
+              <span class="inline-flex items-center gap-1"><span class="material-symbols-outlined" style="font-size: 16px; vertical-align: middle;">calendar_today</span> {article.date}</span>
             </div>
           </div>
         </header>
