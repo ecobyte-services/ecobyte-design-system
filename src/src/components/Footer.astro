@@ -4,8 +4,35 @@ const year = new Date().getFullYear();
 
 <footer
   class="border-t mt-20"
-  style="background: var(--bg-surface); border-color: var(--border);"
+  style="background: var(--bg-surface); border-color: var(--border); position: relative; overflow: hidden;"
 >
+  <!-- Organic root silhouette -->
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1440 120"
+    preserveAspectRatio="none"
+    aria-hidden="true"
+    style="position:absolute;bottom:0;left:0;width:100%;height:120px;pointer-events:none;"
+  >
+    <g
+      fill="none"
+      stroke-width="1.2"
+      stroke-linecap="round"
+      style="stroke: var(--footer-root-stroke);"
+    >
+      <path d="M720,120 C680,114 600,107 500,100 C400,93 280,87 140,83 C70,81 20,81 0,81"/>
+      <path d="M720,120 C760,114 840,107 940,100 C1040,93 1160,87 1300,83 C1370,81 1420,81 1440,81"/>
+      <path d="M720,120 C714,95 706,70 696,48 C688,30 678,14 669,5"/>
+      <path d="M720,120 C726,95 734,70 744,48 C752,30 762,14 771,5"/>
+      <path d="M500,100 C490,88 485,74 484,60 C483,48 485,36 488,26 C491,18 496,10 500,5"/>
+      <path d="M940,100 C950,88 955,74 956,60 C957,48 955,36 952,26 C949,18 944,10 940,5"/>
+      <path d="M200,84 C192,72 188,58 188,44 C188,32 192,22 198,14 C202,8 208,4 212,2"/>
+      <path d="M1240,84 C1248,72 1252,58 1252,44 C1252,32 1248,22 1242,14 C1238,8 1232,4 1228,2"/>
+      <path d="M380,90 C372,80 369,68 370,56 C371,46 375,38 381,32"/>
+      <path d="M1060,90 C1068,80 1071,68 1070,56 C1069,46 1065,38 1059,32"/>
+    </g>
+  </svg>
+
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
 
